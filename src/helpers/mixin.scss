@@ -1,0 +1,91 @@
+//be carefull, if you open a comment -
+//check opening bgi size and burger-button position
+
+
+@mixin onPhone360x640 {
+  @media (min-width: 640px) 
+  and (min-height: 360px) 
+  {
+    @content;
+  }
+}
+@mixin onPhone360x780 {
+  @media (min-width: 780px) 
+  and (min-height: 360px) 
+  {
+    @content;
+  }
+}
+
+@mixin onPhone375x667 {
+  @media (min-width: 667px) 
+  and (min-height: 375px) 
+  {
+    @content;
+  }
+}
+
+@mixin onPhone375x812 {
+  @media (min-width: 812px) 
+  and (min-height: 375px) 
+  {
+    @content;
+  }
+}
+//be carefull, if you open a comment -
+//check opening bgi size and burger-button position
+@mixin onPhone414x736 {
+  @media (min-width: 736px) 
+  and (min-height: 896px) 
+  {
+    @content;
+  }
+}
+@mixin onPhone414x896 {
+  @media (min-width: 896px) 
+  // and (min-height: 896px) 
+  {
+    @content;
+  }
+}
+
+@mixin onTablet1024x786 {
+  @media (min-width: 1024px) 
+  // and (min-height: 786px) 
+  // don't open a comment, 
+  // it cause issues with opening bgi and burger-button
+  {
+    @content;
+  }
+}
+
+@mixin onDesktop1280x720 {
+  @media (min-width: 1280px) 
+  // and (min-height: 720px)
+   {
+    @content;
+  }
+}
+@mixin onDesktop1366x768 {
+  @media (min-width: 1366px) 
+  // and (min-height: 768px)
+   {
+    @content;
+  }
+}
+
+@mixin onDesktop1440x900 {
+  @media (min-width: 1440px) 
+  // and (min-height: 900px) 
+  {
+    @content;
+  }
+}
+
+@mixin onDesktop1920x1080 {
+  @media (min-width: 1920px)
+  // and (min-height: 1080px) 
+  {
+    @content;
+  }
+}

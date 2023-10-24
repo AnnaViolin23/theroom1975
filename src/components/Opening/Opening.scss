@@ -1,0 +1,105 @@
+@import '../../helpers/mixin.scss';
+
+.opening {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  background-image: url(../../../public/images/main_upgrade.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 140%;
+  animation-name: zoomInBackground, changeBackgroundImage;
+  animation-duration: 8s, 3s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-delay: 12s;
+
+  @include onPhone360x640 {
+    background-size: 95% 150%;
+  }
+
+  @include onPhone375x667 {
+    background-size: 110% 160%;
+  }
+
+  @include onPhone375x812 {
+    background-size: 90% 160%;
+  }
+
+  @include onPhone414x896 {
+    background-size: 80% 150%;
+  }
+
+  @include onTablet1024x786 {
+    background-size: 100% 130%;
+  }
+
+  @include onDesktop1280x720 {
+    background-size: 95% 150%;
+  }
+}
+
+.animated-phrase {
+  font-family: "URWGroteskSCLig W03 Regular";
+  font-size: 16px;
+  color: white;
+  font-weight: normal;
+
+  @include onPhone375x667 {
+    font-size: 16px;
+  }
+
+  @include onPhone375x812 {
+    font-size: 17px;
+  }
+
+  @include onPhone414x896 {
+    font-size: 18px;
+  }
+
+  @include onTablet1024x786 {
+    font-size: 26px;
+  }
+
+  @include onDesktop1280x720 {
+    font-size: 30px;
+  }
+
+  @include onDesktop1920x1080 {
+    font-size: 38px;
+  }
+
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  opacity: 0;
+  animation: fadeInAndOut 4.5s ease-in-out forwards;
+  transform: translate(-50%, -50%);
+  white-space: pre;
+  transition: opacity 500ms ease-in-out;
+}
+
+@keyframes fadeInAndOut {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomInBackground {
+  to {
+    background-size: 1000% 1400%;
+  }
+}
+
+@keyframes changeBackgroundImage {
+  to {
+    background-image: url(../../../public/images/bgi_black.png);
+  }
+}

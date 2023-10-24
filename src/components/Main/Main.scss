@@ -1,0 +1,121 @@
+@import '../../helpers/mixin.scss';
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  height: 100vh;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+  opacity: 0;
+  transition: background-image 1s ease-in, opacity 5s ease-in;
+
+
+  &.show-image {
+    background-image: url(../../../public/images/IMG_2204.JPG);
+    opacity: 1;
+  }
+
+  &.origin {
+    background-image: url(../../../public/images/IMG_2204.JPG);
+  }
+
+  &.raw {
+    background-image: url(../../../public/images/IMG_2204_b&w.png);
+  }
+
+  &.glow {
+    background-image: url(../../../public/images/IMG_2204_glow.png);
+  }
+}
+
+.burger-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+
+  position: absolute;
+  top: 10px;
+  right: 40px;
+  height: 15px;
+  width: 15px;
+
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 3;
+
+  @include onPhone360x780 {
+    top: 10px;
+    right: 110px;
+  }
+
+  @include onPhone375x667 {
+    top: 10px;
+    right: 42px;
+  }
+
+  @include onPhone375x812 {
+    top: 10px;
+    right: 114px;
+  }
+  @include onPhone414x736 {
+    top: 11px;
+    right: 47px;
+  }
+  @include onPhone414x896 {
+    top: 12px;
+    right: 128px;
+  }
+
+  @include onTablet1024x786 {
+    top: 85px;
+    right: 20px;
+    height: 20px;
+    width: 30px;
+    font-size: 14px;
+  }
+
+  @include onDesktop1280x720 {
+    top: 20px;
+    right: 82px;
+    height: 25px;
+    width: 40px;
+    font-size: 16px;
+  }
+  @include onDesktop1366x768 {
+    top: 22px;
+    right: 87px;
+    font-size: 18px;
+  }
+  @include onDesktop1440x900{
+    top: 29px;
+    right: 32px;
+    height: 27px;
+    width: 45px;
+    font-size: 20px;
+  }
+  @include onDesktop1920x1080{
+    top: 32px;
+    right: 125px;
+    height: 35px;
+    width: 58px;
+    font-size: 24px;
+  }
+
+  &.is-active {
+    border: 0px;
+    content: "";
+  }
+}

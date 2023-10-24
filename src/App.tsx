@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { useEffect, useState } from 'react';
+import { Main } from './components/Main/Main';
+import { Opening } from './components/Opening/Opening';
+import PleaseRotate from './animation/rotate/pleaseRotate';
 
-function App() {
+export const App: React.FC = () => {
+  const [hasRotated, setHasRotated] = useState(false);
+  const [showMain, setShowMain] = useState(false);
+  const [showOpening, setShowOpening] = useState(true);
+
+  const checkOrientation = () => {
+    if (
+      (window.screen.orientation.type.includes('landscape') &&
+        window.innerWidth < 1280) ||
+      (window.screen.orientation.type.includes('portrait') &&
+        window.innerWidth >= 1280)
+    ) {
+      const showMainTimer = setTimeout(() => {
+        setShowMain(true);
+      }, 13000);
+      const hideOpeningTimer = setTimeout(() => {
+        setShowOpening(false);
+      }, 14500);
+      return () => {
+        clearTimeout(showMainTimer);
+        clearTimeout(hideOpeningTimer);
+      };
+    } else {
+      PleaseRotate.start({
+        forcePortrait: false,
+      });
+    }
+  };
+
+  useEffect(() => {
+    checkOrientation();
+    window.addEventListener('orientationchange', () => {
+      setHasRotated(true);
+      checkOrientation();
+    });
+
+    return () => {
+      window.removeEventListener('orientationchange', checkOrientation);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (hasRotated) {
+      window.location.reload();
+    }
+  }, [hasRotated]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {showOpening && <Opening />}
+      {showMain && <Main />}
     </div>
   );
-}
-
-export default App;
+};

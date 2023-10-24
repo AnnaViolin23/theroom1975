@@ -1,0 +1,205 @@
+@import '../../helpers/mixin.scss';
+
+.bgi-menu {
+  display: block;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  background-color: #fff;
+  z-index: 2;
+  top: 10px;
+  right: 40px;
+  overflow: hidden;
+  transition: width 1s ease-in, 1s ease-in;
+
+  @include onPhone375x667 {
+    right: 42px;
+  }
+
+  @include onPhone360x780 {
+    right: 110px;
+  }
+
+  @include onPhone375x812 {
+    right: 114px;
+  }
+
+  @include onPhone414x736 {
+    top: 11px;
+    right: 47px;
+  }
+
+  @include onPhone414x896 {
+    top: 12px;
+    right: 128px;
+  }
+
+  @include onTablet1024x786 {
+    top: 85px;
+    right: 20px;
+  }
+
+  @include onDesktop1280x720 {
+    top: 20px;
+    right: 82px;
+  }
+
+  @include onDesktop1366x768 {
+    top: 22px;
+    right: 87px;
+  }
+
+  @include onDesktop1440x900 {
+    top: 29px;
+    right: 32px;
+  }
+
+  @include onDesktop1920x1080 {
+    top: 32px;
+    right: 125px;
+  }
+
+  &__header {
+    margin: 6px 6px 0px;
+    text-wrap: nowrap;
+    padding: 0 2px 0;
+    font-size: 12px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 1s ease-in 1s;
+
+    @include onTablet1024x786 {
+      font-size: 13px;
+      margin: 6px 9px 0px;
+    }
+
+    @include onDesktop1280x720 {
+      font-size: 13px;
+      margin: 7px 9px 1px;
+    }
+
+    @include onDesktop1440x900 {
+      font-size: 15px;
+      margin: 8px 9px 1px;
+    }
+    @include onDesktop1920x1080 {
+      font-size: 16px;
+    }
+  }
+
+  &__item {
+    margin: 0;
+    margin: 6px 6px 0px;
+    text-wrap: nowrap;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    opacity: 1;
+    transition: opacity 1s ease-in 1s;
+
+    @include onTablet1024x786 {
+      margin: 6px 9px 0px;
+    }
+
+    @include onDesktop1280x720 {
+      margin: 7px 9px 1px;
+    }
+
+    @include onDesktop1440x900 {
+      margin: 8px 9px 1px;
+    }
+  }
+
+  &__radio {
+    display: none;
+
+    &:checked+.bgi-menu__label::before {
+      background-color: #000;
+
+    }
+
+    &:checked+.bgi-menu__label::before::after {
+      content: "";
+      display: block;
+      width: 8px;
+      height: 8px;
+      background-color: #fff;
+      border-radius: 50%;
+      margin: 2px 2px 2px 2px;
+    }
+  }
+
+  &__label {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 1s ease-in 1s;
+
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border: 1px solid #000;
+      border-radius: 50%;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    @include onDesktop1440x900 {
+      font-size: 11px;
+    }
+    @include onDesktop1920x1080 {
+      font-size: 12px;
+    }
+  }
+}
+
+.showMenu .bgi-menu {
+  height: 80px;
+  width: 85px;
+  transition: width 1s ease-in, 1s ease-in;
+  overflow: hidden;
+
+  @include onTablet1024x786 {
+    height: 85px;
+    width: 115px;
+  }
+
+  @include onDesktop1280x720 {
+    height: 90px;
+    width: 130px;
+  }
+
+  @include onDesktop1366x768 {
+    height: 90px;
+    width: 130px;
+  }
+
+  @include onDesktop1440x900 {
+    height: 100px;
+    width: 145px;
+  }
+  @include onDesktop1920x1080 {
+    height: 105px;
+    width: 160px;
+  }
+
+  .bgi-menu__header,
+  .bgi-menu__label {
+    opacity: 1;
+  }
+}
+
+// .bgi-menu.is-closed {
+//   display: none;
+//   width: 0;
+//   height: 0;
+//   opacity: 0;
+//   transition: none;
+// }
