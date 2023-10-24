@@ -6,6 +6,7 @@ import { calculateCoordinates } from '../../helpers/calculateCoordinates';
 import { Coordinate } from '../../types/Coordinate';
 import { initialCoordinates360x640 } from '../../api/coord360x640';
 import { MyObject } from '../../types/singleObject';
+import objectList from '../../api/objectList.json';
 
 
 export const Information: React.FC = () => {
@@ -17,13 +18,14 @@ export const Information: React.FC = () => {
   const [initialObjects, setInitialObjects] = useState<MyObject[]>([]);
 
   //fetching objects 
-  const getData = () => {
-    fetch('/objectList.json')
-      .then(function (response) {
-        return response.json();
-      })
-      .then(setInitialObjects)
-  }
+  //doesnt work like this cause of path
+  // const getData = () => {
+  //   fetch('/objectList.json')
+  //     .then(function (response) {
+  //       return response.json();
+  //     })
+  //     .then(setInitialObjects)
+  // }
   //end fetching
   
   //searching for propper ids
@@ -66,7 +68,7 @@ export const Information: React.FC = () => {
 
   useEffect(() => {
     //fetching objects
-    getData()
+    setInitialObjects(objectList);
     //end fetching
 
     const updatedCoordinates = calculateCoordinates();
