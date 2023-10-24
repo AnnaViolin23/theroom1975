@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/theroom1975/static/css/main.1e8ec609.css",
-    "main.js": "/theroom1975/static/js/main.2afecc6e.js",
+    "main.js": "/theroom1975/static/js/main.ff6e1d3c.js",
     "static/js/787.b28bcc09.chunk.js": "/theroom1975/static/js/787.b28bcc09.chunk.js",
     "static/media/IMG_2204_glow.png": "/theroom1975/static/media/IMG_2204_glow.737bc4a49ed6bdd08856.png",
     "static/media/IMG_2204_b&w.png": "/theroom1975/static/media/IMG_2204_b&w.4d2b3bda2ece47c61c2b.png",
@@ -9,11 +9,11 @@
     "static/media/main_upgrade.jpeg": "/theroom1975/static/media/main_upgrade.f62368b306a6be27ca06.jpeg",
     "index.html": "/theroom1975/index.html",
     "main.1e8ec609.css.map": "/theroom1975/static/css/main.1e8ec609.css.map",
-    "main.2afecc6e.js.map": "/theroom1975/static/js/main.2afecc6e.js.map",
+    "main.ff6e1d3c.js.map": "/theroom1975/static/js/main.ff6e1d3c.js.map",
     "787.b28bcc09.chunk.js.map": "/theroom1975/static/js/787.b28bcc09.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1e8ec609.css",
-    "static/js/main.2afecc6e.js"
+    "static/js/main.ff6e1d3c.js"
   ]
 }
