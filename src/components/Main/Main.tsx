@@ -4,7 +4,6 @@ import { Information } from '../Information/Information';
 import classNames from 'classnames';
 import { ImageType } from '../../types/ImageType';
 import { List } from '../BGList/List';
-import { BGPreload } from '../BGPreload/BGPreload';
 // import {CommentPage} from '../CommentPage/CommentPage';
 
 export const Main: React.FC = () => {
@@ -33,8 +32,6 @@ export const Main: React.FC = () => {
 
   return (
     <>
-      <BGPreload />
-
       <div className={classNames('container', {
         'show-image': showImage,
         'showMenu': showMenu,
