@@ -10,11 +10,12 @@ export const App: React.FC = () => {
   const [showOpening, setShowOpening] = useState(true);
 
   const checkOrientation = () => {
+    const mediaQueryLand = window.matchMedia("(orientation: landscape)");
+    const mediaQueryPort = window.matchMedia("(orientation: portrait)");
+
     if (
-      (window.screen.orientation.type.includes('landscape') &&
-        window.innerWidth < 1280) ||
-      (window.screen.orientation.type.includes('portrait') &&
-        window.innerWidth >= 1280)
+      (mediaQueryLand.matches && window.innerWidth < 1280) ||
+      (mediaQueryPort.matches && window.innerWidth >= 1280)
     ) {
       const showMainTimer = setTimeout(() => {
         setShowMain(true);
@@ -35,13 +36,17 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     checkOrientation();
-    window.addEventListener('orientationchange', () => {
+    const mediaQuery = window.matchMedia("(orientation: portrait)");
+
+    const orientationChangeHandler = () => {
       setHasRotated(true);
       checkOrientation();
-    });
+    };
+
+    mediaQuery.addEventListener("change", orientationChangeHandler);
 
     return () => {
-      window.removeEventListener('orientationchange', checkOrientation);
+      mediaQuery.removeEventListener("change", orientationChangeHandler);
     };
   }, []);
 
