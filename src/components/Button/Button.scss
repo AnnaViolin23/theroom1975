@@ -3,8 +3,8 @@
 .round-button {
   position: absolute;
   display: block;
-  width: 5px;
-  height: 5px;
+  width: 8px;
+  height: 8px;
 
   @include onTablet1024x786 {
     width: 7px;
@@ -40,7 +40,12 @@
   cursor: pointer;
   animation: pulse 1s infinite alternate;
   transition: opacity 0.5s;
-  opacity: 0.2;
+
+
+
+  // opacity: 0.2;
+  // display: none;
+  //DELETE
 
   &:hover {
     opacity: 1;

@@ -21,17 +21,17 @@ export function calculateCoordinates(): Coordinate[] {
     return initialCoordinates1366x768;
   } else if (window.innerWidth >= 1280 && window.innerHeight >= 720) {
     return initialCoordinates1280;
-  } else if (window.innerWidth >= 1024 && window.innerHeight >= 768) {
+  } else if (window.innerWidth >= 768 && window.innerHeight >= 1024) {
     return initialCoordinates1024;
-  } else if (window.innerWidth >= 896 && window.innerHeight >= 414) {
+  } else if (window.innerWidth >= 414 && window.innerHeight >= 896) {
     return initialCoordinates414x896;
-  } else if (window.innerWidth >= 736 && window.innerHeight >= 414) {
+  } else if (window.innerWidth >= 414 && window.innerHeight >= 736) {
     return initialCoordinates414x736;
-  } else if (window.innerWidth >= 812 && window.innerHeight >= 375) {
+  } else if (window.innerWidth >= 375 && window.innerHeight >= 812) {
     return initialCoordinates375x812;
-  } else if (window.innerWidth >= 667 && window.innerHeight >= 375) {
+  } else if (window.innerWidth >= 375 && window.innerHeight >= 667) {
     return initialCoordinates375x667;
-  } else if (window.innerWidth >= 780 && window.innerHeight >= 360) {
+  } else if (window.innerWidth >= 360 && window.innerHeight >= 760) {
     return initialCoordinates360x780;
   } else {
     return initialCoordinates360x640;

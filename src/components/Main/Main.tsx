@@ -21,17 +21,29 @@ export const Main: React.FC = () => {
   // }
 
   useEffect(() => {
+    const preloadImages = [
+      '/public/images/IMG_2204.jpg',
+      '/public/images/IMG_2204_b&w.png',
+      '/public/images/IMG_2204_glow.png'
+    ];
+
+    preloadImages.forEach((imageSrc) => {
+      const preloadImage = new Image();
+      preloadImage.src = imageSrc;
+    });
+
     const timer = setTimeout(() => {
-      setShowImage(true)
+      setShowImage(true);
     }, 1000);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [])
+  }, []);
+
 
   return (
-    <>
+    <div className='main'>
       <div className={classNames('container', {
         'show-image': showImage,
         'showMenu': showMenu,
@@ -52,14 +64,14 @@ export const Main: React.FC = () => {
         <Information />
       </div>
         {/* <CommentPage /> */}
-    </>
+    </div>
   )
 }
 
 
-// window.addEventListener('click', function (event) {
-//   const x = event.clientX;
-//   const y = event.clientY;
+window.addEventListener('click', function (event) {
+  const x = event.clientX;
+  const y = event.clientY;
 
-//   console.log(`Координати: x=${x}, y=${y}`);
-// });
+  console.log(`Координати: x=${x}, y=${y}`);
+});

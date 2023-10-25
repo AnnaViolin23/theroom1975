@@ -3,31 +3,31 @@
 
 
 @mixin onPhone360x640 {
-  @media (min-width: 640px) 
-  and (min-height: 360px) 
+  @media (min-width: 360px)
+  and (min-height: 640px)  
   {
     @content;
   }
 }
 @mixin onPhone360x780 {
-  @media (min-width: 780px) 
-  and (min-height: 360px) 
+  @media (min-width: 360px)
+  and (min-height: 780px) 
   {
     @content;
   }
 }
 
 @mixin onPhone375x667 {
-  @media (min-width: 667px) 
-  and (min-height: 375px) 
+  @media (min-width: 375px) 
+  and (min-height: 667px)
   {
     @content;
   }
 }
 
 @mixin onPhone375x812 {
-  @media (min-width: 812px) 
-  and (min-height: 375px) 
+  @media (min-width: 375px) 
+  and (min-height: 812px)
   {
     @content;
   }
@@ -35,23 +35,23 @@
 //be carefull, if you open a comment -
 //check opening bgi size and burger-button position
 @mixin onPhone414x736 {
-  @media (min-width: 736px) 
-  and (min-height: 896px) 
+  @media (min-width: 414px)
+  and (min-height: 736px) 
   {
     @content;
   }
 }
 @mixin onPhone414x896 {
-  @media (min-width: 896px) 
-  // and (min-height: 896px) 
+  @media (min-height: 896px) 
+  // and (min-height: 414px) 
   {
     @content;
   }
 }
 
 @mixin onTablet1024x786 {
-  @media (min-width: 1024px) 
-  // and (min-height: 786px) 
+  @media (min-height: 1024px) 
+  and (min-width: 768px) 
   // don't open a comment, 
   // it cause issues with opening bgi and burger-button
   {
