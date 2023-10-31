@@ -1,9 +1,11 @@
 import './App.scss';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Main } from './components/Main/Main';
 import { Opening } from './components/Opening/Opening';
+import classNames from 'classnames';
 
 export const App: React.FC = () => {
+  const [showMenu, setShowMenu] = useState<boolean>(false);
   const [showMain, setShowMain] = useState(false);
   const [showOpening, setShowOpening] = useState(true);
 
@@ -23,7 +25,14 @@ export const App: React.FC = () => {
   return (
     <div>
       {showOpening && <Opening />}
-      {showMain && <Main />}
+      <div className={classNames('main-container', {'active-menu': showMenu})}>
+        {showMain && 
+        <Main
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+        />
+        }
+      </div>
     </div>
   );
 };

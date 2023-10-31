@@ -1,16 +1,22 @@
 @import '../../helpers/mixin.scss';
 
 .bgi-menu {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  // align-content: center;
+  flex-direction: column;
+
   position: absolute;
-  width: 0px;
-  height: 0px;
+  width: 0;
+  height: 0;
   background-color: #fff;
   z-index: 2;
-  top: 10px;
-  right: 40px;
+  top: 0px;
+  left: 0px;
   overflow: hidden;
-  transition: width 1s ease-in, 1s ease-in;
+  transition: height 1s ease-in;
 
   @include onPhone375x667 {
     right: 42px;
@@ -63,40 +69,84 @@
     margin: 6px 6px 0px;
     text-wrap: nowrap;
     padding: 0 2px 0;
-    font-size: 12px;
+    margin: 20px 0;
+    font-size: 18px;
     font-weight: bold;
+    opacity: 1;
+    transition: color 0.2s;
+
+    line-height: 22px;
+    letter-spacing: 2px;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 1px;
+      background-color: rgb(9, 9, 9);
+      transform: scaleX(0);
+      transform-origin: 0 100%;
+      transition: transform 0.5s;
+    }
+
+    &:hover::after,
+    &.is-visible::after {
+      transform: scaleX(1);
+    }
+
+
+    @include onTablet1024x786 {}
+
+    @include onDesktop1280x720 {}
+
+    @include onDesktop1440x900 {}
+
+    @include onDesktop1920x1080 {}
+  }
+
+  &__items {
+    transform: translateY(-100);
     opacity: 0;
-    transition: opacity 1s ease-in 1s;
+    transition: opacity 2s, transform 5s ease-in;
 
-    @include onTablet1024x786 {
-      font-size: 13px;
-      margin: 6px 9px 0px;
-    }
-
-    @include onDesktop1280x720 {
-      font-size: 13px;
-      margin: 7px 9px 1px;
-    }
-
-    @include onDesktop1440x900 {
-      font-size: 15px;
-      margin: 8px 9px 1px;
-    }
-    @include onDesktop1920x1080 {
-      font-size: 16px;
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
   &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     margin: 0;
     margin: 6px 6px 0px;
     text-wrap: nowrap;
     list-style: none;
-    display: flex;
-    flex-direction: column;
+    transition: color 0.3s;
+
     gap: 2px;
-    opacity: 1;
-    transition: opacity 1s ease-in 1s;
+
+    &:hover {
+      transition: color 0.3s;
+
+      cursor: pointer;
+      color: rgb(188, 188, 188);
+    }
+
+    &.is-active {
+      transition: color 0.3s;
+
+      color: rgb(212, 0, 0);
+    }
 
     @include onTablet1024x786 {
       margin: 6px 9px 0px;
@@ -108,92 +158,23 @@
 
     @include onDesktop1440x900 {
       margin: 8px 9px 1px;
-    }
-  }
-
-  &__radio {
-    display: none;
-
-    &:checked+.bgi-menu__label::before {
-      background-color: #000;
-
-    }
-
-    &:checked+.bgi-menu__label::before::after {
-      content: "";
-      display: block;
-      width: 8px;
-      height: 8px;
-      background-color: #fff;
-      border-radius: 50%;
-      margin: 2px 2px 2px 2px;
-    }
-  }
-
-  &__label {
-    cursor: pointer;
-    user-select: none;
-    display: flex;
-    align-items: center;
-    font-size: 10px;
-    opacity: 0;
-    transition: opacity 1s ease-in 1s;
-
-
-    &::before {
-      content: "";
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border: 1px solid #000;
-      border-radius: 50%;
-      margin-right: 5px;
-      vertical-align: middle;
-    }
-
-    @include onDesktop1440x900 {
-      font-size: 11px;
-    }
-    @include onDesktop1920x1080 {
-      font-size: 12px;
     }
   }
 }
 
 .showMenu .bgi-menu {
-  height: 80px;
-  width: 85px;
-  transition: width 1s ease-in, 1s ease-in;
+  top: 0px;
+  left: 0px;
+  // right: 100vw;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
+  transition: height 1s ease-in;
 
-  @include onTablet1024x786 {
-    height: 85px;
-    width: 115px;
-  }
 
-  @include onDesktop1280x720 {
-    height: 90px;
-    width: 130px;
-  }
-
-  @include onDesktop1366x768 {
-    height: 90px;
-    width: 130px;
-  }
-
-  @include onDesktop1440x900 {
-    height: 100px;
-    width: 145px;
-  }
-  @include onDesktop1920x1080 {
-    height: 105px;
-    width: 160px;
-  }
-
-  .bgi-menu__header,
-  .bgi-menu__label {
-    opacity: 1;
-  }
+  // .bgi-menu__header,
+  // .bgi-menu__label {
+  // }
 }
 
 // .bgi-menu.is-closed {

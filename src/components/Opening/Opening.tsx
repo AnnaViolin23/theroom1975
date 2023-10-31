@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Opening.scss'
 
 const phrases = [
-  "ladies and\ngentlemen",
-  "with great honor\nwe present to you",
-  "The Room\nof\nThe 1975"
+  "LADIES AND\nGENTEMEN",
+  "WITH GREAT HONOR\nWE PRESENT TO YOU",
+  "ROOM\nof\nTHE 1975"
 ];
 
 export const Opening: React.FC = () => {
@@ -24,11 +24,12 @@ export const Opening: React.FC = () => {
 
   return (
     <>
-      <div className='opening'>
+      <div className="opening">
         {phrases.map((phrase, index) => (
           <h1
             key={index}
-            className={`animated-phrase ${phraseIndex === index ? 'active' : ''}`}
+            className={`animated-phrase ${phraseIndex === index ? "active" : ""} ${index === phrases.length - 1 ? "last-phrase" : ""
+              }`}
             style={{ animationDelay: `${index * 4.5}s` }}
           >
             {phrase}

@@ -1,19 +1,34 @@
+import React from 'react';
 import { useEffect, useState } from 'react'
 import './Main.scss'
-import { Information } from '../Information/Information';
 import classNames from 'classnames';
+import { Information } from '../Information/Information';
 import { ImageType } from '../../types/ImageType';
 import { List } from '../BGList/List';
+import { ScrollReminder } from '../ScrollReminder/ScrollReminder';
 // import {CommentPage} from '../CommentPage/CommentPage';
 
-export const Main: React.FC = () => {
+
+type Props = {
+  showMenu: boolean;
+  setShowMenu: (value: boolean) => void;
+}
+export const Main: React.FC<Props> = ({showMenu, setShowMenu}) => {
   const [showImage, setShowImage] = useState<boolean>(false);
-  const [showMenu, setShowMenu] = useState<boolean>(false);
+  // const [showMenu, setShowMenu] = useState<boolean>(false);
   // const [hideMenu, setHideMenu] = useState<boolean>(false);
   const [imageType, setImageType] = useState<ImageType>('origin');
+  const [listVisible, setListVisible] = useState(false);
+
 
   const toggleMenu = () => {
-    setShowMenu(!showMenu);
+    if (showMenu) {
+      setShowMenu(false);
+      setListVisible(false);
+      // window.scrollTo(window.innerWidth / 2, window.scrollY);
+    } else {
+      setShowMenu(true);
+    }
   };
 
   // const closeMenu = () => {
@@ -22,15 +37,16 @@ export const Main: React.FC = () => {
 
   useEffect(() => {
     const preloadImages = [
-      '/public/images/IMG_2204.jpg',
-      '/public/images/IMG_2204_b&w.png',
-      '/public/images/IMG_2204_glow.png'
+      '/images/IMG_2204.jpg',
+      '/images/IMG_2204_b&w.png',
+      '/images/IMG_2204_glow.png'
     ];
 
     preloadImages.forEach((imageSrc) => {
       const preloadImage = new Image();
       preloadImage.src = imageSrc;
     });
+
 
     const timer = setTimeout(() => {
       setShowImage(true);
@@ -41,6 +57,11 @@ export const Main: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    setShowMenu(false);
+    setListVisible(false);
+  }, [imageType]);
+
 
   return (
     <div className='main'>
@@ -49,29 +70,25 @@ export const Main: React.FC = () => {
         'showMenu': showMenu,
         [imageType]: true
       })}>
-        <button
+        <img
+          src={showMenu ? '/close1.png' : '/menu.png'}
           className={classNames('burger-button', { 'is-active': showMenu })}
           onClick={toggleMenu}
-        >
-          {showMenu ? "-" : "+"}
-        </button>
+          alt='burger-menu icon'
+        />
+
+        <ScrollReminder />
 
         <List
+          listVisible={listVisible}
+          setListVisible={setListVisible}
           imageType={imageType}
           setImageType={setImageType}
         />
-
         <Information />
       </div>
-        {/* <CommentPage /> */}
+      {/* <CommentPage /> */}
     </div>
   )
 }
 
-
-window.addEventListener('click', function (event) {
-  const x = event.clientX;
-  const y = event.clientY;
-
-  console.log(`Координати: x=${x}, y=${y}`);
-});

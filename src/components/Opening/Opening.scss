@@ -41,13 +41,17 @@
 }
 
 .animated-phrase {
-  font-family: "URWGroteskSCLig W03 Regular";
-  font-size: 24px;
+  // font-family: "URWGroteskSCLig W03 Regular";
+  font-family: "Nimbus Sans L Regular";
+  font-size: 16px;
+  font-weight: lighter;
   color: white;
   font-weight: normal;
+  letter-spacing: 1px;
+  line-height: 1.5;
 
   @include onPhone375x667 {
-    font-size: 26px;
+    font-size: 16px;
   }
 
   // @include onPhone375x812 {
@@ -55,20 +59,20 @@
   // }
 
   @include onPhone414x736 {
-    font-size: 28px;
+    font-size: 18px;
   }
 
   @include onTablet1024x786 {
-    font-size: 36px;
+    font-size: 24px;
   }
 
   @include onDesktop1280x720 {
-    font-size: 34px;
+    font-size: 22px;
   }
 
-  // @include onDesktop1920x1080 {
-  //   font-size: 38px;
-  // }
+  @include onDesktop1920x1080 {
+    font-size: 30px;
+  }
 
   position: absolute;
   top: 49%;
@@ -78,6 +82,37 @@
   transform: translate(-50%, -50%);
   white-space: pre;
   transition: opacity 500ms ease-in-out;
+
+  &.last-phrase {
+    font-size: 20px;
+    animation: fadeInAndOut 6s ease-in-out forwards;
+
+    @include onPhone375x667 {
+      font-size: 24px;
+    }
+    @include onTablet1024x786 {
+      font-size: 30px;
+    }
+    @include onDesktop1920x1080 {
+      font-size: 36px;
+    }
+  }
+}
+
+@keyframes zoomIn {
+  to {
+    transform: scale(100);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.95;
+  }
 }
 
 @keyframes fadeInAndOut {
@@ -88,13 +123,13 @@
   }
 
   50% {
-    opacity: 1;
+    opacity: 0.95;
   }
 }
 
 @keyframes zoomInBackground {
   to {
-    background-size: 1000% 1400%;
+    background-size: 1000% 750%;
   }
 }
 

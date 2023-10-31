@@ -6,7 +6,7 @@ export const initialCoordinates414x896 = [
   { x: 275, y: 130, id: 5 },
   { x: 382, y: 92, id: 6 },
   { x: 465, y: 87, id: 7 },
-  { x: 367, y: 160, id: 8 },
+  { x: 367, y: 175, id: 8 },
   { x: 480, y: 160, id: 9 },
   { x: 685, y: 28, id: 10 },
   { x: 627, y: 132, id: 11 },
