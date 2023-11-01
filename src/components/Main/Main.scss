@@ -1,19 +1,18 @@
 @import '../../helpers/mixin.scss';
 
-.container {
-  position: relative;
+.image {
+  // position: relative;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+  align-content: center;
 
-  // max-width: 100%;
+  box-sizing: border-box;
+  height: 100vh;
+
+  overflow-x: auto;
+
   min-width: 1025px;
-
-  &.showMenu {
-    // min-width: 100vw;
-    overflow: hidden;
-    background-image: none;
-  }
 
   @include onPhone360x780 {
     min-width: 1252px;
@@ -31,42 +30,47 @@
   @include onPhone414x896 {
     min-width: 1440px;
   }
-  // @include onTablet1024x786 {
-  //   min-width: 1640px;
-  // }
 
-  // height: 100%;
+  @include onTablet1024x786 {
+    min-width: 1640px;
+  }
+  @include onDesktop1280x720 {
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+
+  // justify-content: center;
+  //DONT TOUCH IT!!!!!!
+
+  align-items: center;
   box-sizing: border-box;
   height: 100vh;
 
-  background-size: contain;
-  background-position: top;
-  background-repeat: no-repeat;
+  // max-width: 100%;
+  // min-width: 1025px;
 
-  // overflow: hidden;
+  @include onTablet1024x786 {
+    // min-width: 1640px;
+  }
+  @include onDesktop1280x720 {
+  justify-content: center;
+}
+
+  &.show-menu {
+    min-width: 100vw;
+    overflow: hidden;
+    // background-image: none;
+  }
+
   overflow-x: auto;
-  // overflow-y: hidden;
-
-
   opacity: 0;
   transition: background-image 1s ease-in, opacity 5s ease-in;
 
-
   &.show-image {
-    background-image: url(../../../public/images/IMG_2204.JPG);
     opacity: 1;
-  }
-
-  &.origin {
-    background-image: url(../../../public/images/IMG_2204.JPG);
-  }
-
-  &.raw {
-    background-image: url(../../../public/images/IMG_2204_b&w.png);
-  }
-
-  &.glow {
-    background-image: url(../../../public/images/IMG_2204_glow.png);
   }
 }
 

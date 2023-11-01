@@ -25,14 +25,12 @@ export const App: React.FC = () => {
   return (
     <div>
       {showOpening && <Opening />}
-      <div className={classNames('main-container', {'active-menu': showMenu})}>
-        {showMain && 
+      {showMain &&
         <Main
           showMenu={showMenu}
           setShowMenu={setShowMenu}
         />
-        }
-      </div>
+      }
     </div>
   );
 };

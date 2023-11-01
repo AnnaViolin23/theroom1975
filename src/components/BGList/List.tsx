@@ -15,7 +15,7 @@ export const List: React.FC<Props> = ({ imageType, listVisible, setImageType, se
   const menuItems = [
     { id: 'origin', label: 'origin' },
     { id: 'raw', label: 'black&white' },
-    { id: 'glow', label: 'glow' },
+    { id: 'glow', label: 'neon' },
   ];
 
   return (

@@ -13,21 +13,30 @@ type Props = {
   showMenu: boolean;
   setShowMenu: (value: boolean) => void;
 }
-export const Main: React.FC<Props> = ({showMenu, setShowMenu}) => {
+
+export const Main: React.FC<Props> = ({ showMenu, setShowMenu }) => {
   const [showImage, setShowImage] = useState<boolean>(false);
   // const [showMenu, setShowMenu] = useState<boolean>(false);
   // const [hideMenu, setHideMenu] = useState<boolean>(false);
   const [imageType, setImageType] = useState<ImageType>('origin');
   const [listVisible, setListVisible] = useState(false);
+  const [closeMenu, setCloseMenu] = useState(true);
 
+  const imagePaths = {
+    origin: '/images/IMG_2204.jpg',
+    raw: '/images/IMG_2204_b&w.png',
+    glow: '/images/IMG_2204_glow.png',
+  };
 
   const toggleMenu = () => {
     if (showMenu) {
       setShowMenu(false);
       setListVisible(false);
+      setCloseMenu(true);
       // window.scrollTo(window.innerWidth / 2, window.scrollY);
     } else {
       setShowMenu(true);
+      setCloseMenu(false);
     }
   };
 
@@ -60,14 +69,15 @@ export const Main: React.FC<Props> = ({showMenu, setShowMenu}) => {
   useEffect(() => {
     setShowMenu(false);
     setListVisible(false);
-  }, [imageType]);
+  }, [imageType, setShowMenu]);
 
 
   return (
     <div className='main'>
       <div className={classNames('container', {
         'show-image': showImage,
-        'showMenu': showMenu,
+        'show-menu': showMenu,
+        'is-closed': closeMenu,
         [imageType]: true
       })}>
         <img
@@ -76,6 +86,8 @@ export const Main: React.FC<Props> = ({showMenu, setShowMenu}) => {
           onClick={toggleMenu}
           alt='burger-menu icon'
         />
+
+        <img src={imagePaths[imageType]} className='image' alt='img' />
 
         <ScrollReminder />
 
