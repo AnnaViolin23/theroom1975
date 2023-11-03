@@ -13,56 +13,11 @@
   height: 0;
   background-color: #fff;
   z-index: 2;
-  top: 0px;
-  left: 0px;
   overflow: hidden;
   transition: height 1s ease-in;
 
-  @include onPhone375x667 {
-    right: 42px;
-  }
-
-  @include onPhone360x780 {
-    right: 110px;
-  }
-
-  @include onPhone375x812 {
-    right: 114px;
-  }
-
-  @include onPhone414x736 {
-    top: 11px;
-    right: 47px;
-  }
-
-  @include onPhone414x896 {
-    top: 12px;
-    right: 128px;
-  }
-
-  @include onTablet1024x786 {
-    top: 85px;
-    right: 20px;
-  }
-
   @include onDesktop1280x720 {
-    top: 20px;
-    right: 82px;
-  }
-
-  @include onDesktop1366x768 {
-    top: 22px;
-    right: 87px;
-  }
-
-  @include onDesktop1440x900 {
-    top: 29px;
-    right: 32px;
-  }
-
-  @include onDesktop1920x1080 {
-    top: 32px;
-    right: 125px;
+    transform: scale(1.2);
   }
 
   &__header {
@@ -72,10 +27,12 @@
     margin: 20px 0;
     font-size: 18px;
     font-weight: bold;
+    text-decoration: none;
+    color: black;
     opacity: 1;
-    transition: color 0.2s;
+    // transition: color 0.2s;
 
-    line-height: 22px;
+    line-height: 20px;
     letter-spacing: 2px;
     position: relative;
 
@@ -102,18 +59,19 @@
     }
   }
 
+
   &__items {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity 500ms ease-in, max-height 5s ease-in-out;
-    transition-delay: 300ms;
+    max-height: 1px;
+    overflow-y: hidden;
+    // opacity: 0;
+    transition: max-height 1.5s ease;
+    // transition-delay: 300ms;
 
     &.is-visible {
       max-height: 100vh;
-      opacity: 1;
-      transition: opacity 500s ease-in, max-height 5s ease-in-out; 
-      transition-delay: 300ms;
+      // opacity: 1;
+      transition: max-height 1.5s ease;
+      // transition-delay: 300ms;
     }
   }
 
@@ -132,8 +90,6 @@
 
     &:hover {
       transition: color 0.3s;
-
-      cursor: pointer;
       color: rgb(188, 188, 188);
     }
 
@@ -143,27 +99,28 @@
       color: rgb(212, 0, 0);
     }
 
-    @include onTablet1024x786 {
-      margin: 6px 9px 0px;
-    }
+    // @include onTablet1024x786 {
+    //   margin: 6px 9px 0px;
+    // }
 
-    @include onDesktop1280x720 {
-      margin: 7px 9px 1px;
-    }
+    // @include onDesktop1280x720 {
+    //   margin: 7px 9px 1px;
+    // }
 
-    @include onDesktop1440x900 {
-      margin: 8px 9px 1px;
-    }
+    // @include onDesktop1440x900 {
+    //   margin: 8px 9px 1px;
+    // }
   }
 
   &__label {
     font-size: 15px;
     margin: 4px 4px 4px;
+    cursor: pointer;
   }
 }
 
 .show-menu .bgi-menu {
-  top: 0px;
+  // top: 0px;
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -175,12 +132,11 @@
   // }
 }
 
-.bgi-menu.is-closed {
-  // display: none;
-  width: 0;
-  height: 0;
-  opacity: 0;
-  transition: height 1s ease-in;
-  transition-delay: 500ms;
-}
-
+// .bgi-menu.is-closed {
+//   // display: none;
+//   width: 0;
+//   height: 0;
+//   opacity: 0;
+//   transition: height 1s ease-in;
+//   transition-delay: 500ms;
+// }

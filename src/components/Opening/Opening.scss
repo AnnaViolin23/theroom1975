@@ -10,10 +10,10 @@
   background-position: center;
   background-size: 250% 130%;
   animation-name: zoomInBackground, changeBackgroundImage;
-  animation-duration: 8s, 3s;
+  animation-duration: 7s, 2s;
   animation-timing-function: ease;
   animation-fill-mode: forwards;
-  animation-delay: 12s;
+  animation-delay: 11s;
 
   @include onPhone360x780 {
     background-size: 250% 110%;
@@ -85,7 +85,7 @@
 
   &.last-phrase {
     font-size: 20px;
-    animation: fadeInAndOut 6s ease-in-out forwards;
+    animation: fadeInAndOut 5s ease-in-out forwards;
 
     @include onPhone375x667 {
       font-size: 24px;

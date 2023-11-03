@@ -1,17 +1,20 @@
+@import '../../helpers/mixin.scss';
+
 .topbar {
   position: fixed;
-  display: flex; 
+  display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   box-sizing: border-box;
 
   left: 0;
+  top: 0;
   width: 100%;
   padding: 10px;
   padding-left: 50px;
 
-  font-family: 'Coarse Rounded', sans-serif;  
-  background-color: #aa937d;
+  font-family: 'Coarse Rounded', sans-serif;
+  background-color: #84bfd1;
   font-weight: 1000;
   color: #2b1500;
   z-index: 9;
@@ -20,27 +23,88 @@
   -webkit-box-shadow: 0 -8px 6px -6px rgb(110, 76, 47);
   -moz-box-shadow: 0 -8px 6px -6px rgb(110, 76, 47);
   box-shadow: 0 -8px 6px -6px rgb(110, 76, 47);
-  transition: left 3s, opacity 2s;
-  opacity: 0.92;
+  opacity: 0.86;
 
-  &.hidden {
-    left: -1200px;
-    opacity: 0;
+
+
+  
+  @include onPhone360x640 {
+    transition: left 3s, opacity 2s;
+    &.hidden {
+      left: -1200px;
+      opacity: 0;
+    }
+  }
+
+  @include onTablet1024x786 {
+    padding-top: 25px;
+    transform: scale(1.5);
+  }
+
+
+  @include onDesktop1280x720 {
+    padding-top: 15px;
+    top: 0;
+    width: 100%; 
+    // width: 100vw; 
+    // height: 100vh;
+    font-size: 16px;
+    opacity: 0.80;
+    transition: top 2s, opacity 1s;
+    transform: scale(1.2);
+
+
+    &.hidden {
+      left: 0px;
+      top: -100px; 
+      opacity: 0;
+    }
   }
 }
 
-.arrow {
-  position: relative;
-  width: 40px;
-  height: 30px;
-  transition: .3s ease-in-out;
-  margin-left: 20px;
+
+.icon {
+  &-arrow {
+    position: relative;
+    width: 40px;
+    height: 30px;
+    transition: .3s ease-in-out;
+    margin-left: 20px;
+    animation: pulse 1s infinite alternate;
+
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+  }
+
+  &-zoom {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    transition: .3s ease-in-out;
+    margin-left: 20px;
+    animation: pulse 1s infinite alternate;
+
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  }
+
   animation: pulse 1s infinite alternate;
+
   &:hover {
     transform: scale(1.2);
     cursor: pointer;
   }
+
+  @include onTablet1024x786 {
+    transform: scale(1.5); // Збільшуємо масштаб на 20%
+  }
 }
+
 @keyframes pulse {
   0% {
     transform: scale(1.1);

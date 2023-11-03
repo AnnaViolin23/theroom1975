@@ -1,0 +1,27 @@
+@import '../../helpers/mixin.scss';
+
+
+.discuss-container {
+  // margin: 20px;
+  padding: 20px;
+  padding-top: 60px;
+
+  height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff;
+
+  @include onPhone360x640 {
+  }
+  @include onPhone360x780 {
+  }
+
+  @include onPhone375x812 {
+    height: 100vh;
+  }
+
+  @include onDesktop1280x720 {
+    height: 100vh; 
+  }
+
+}

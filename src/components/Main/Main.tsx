@@ -4,23 +4,20 @@ import './Main.scss'
 import classNames from 'classnames';
 import { Information } from '../Information/Information';
 import { ImageType } from '../../types/ImageType';
-import { List } from '../BGList/List';
+import { List } from '../List/List';
 import { ScrollReminder } from '../ScrollReminder/ScrollReminder';
-// import {CommentPage} from '../CommentPage/CommentPage';
 
 
-type Props = {
-  showMenu: boolean;
-  setShowMenu: (value: boolean) => void;
-}
+// type Props = {
+//   showMenu: boolean;
+//   setShowMenu: (value: boolean) => void;
+// }
 
-export const Main: React.FC<Props> = ({ showMenu, setShowMenu }) => {
+export const Main: React.FC = () => {
+  const [showMenu, setShowMenu] = useState<boolean>(false);
   const [showImage, setShowImage] = useState<boolean>(false);
-  // const [showMenu, setShowMenu] = useState<boolean>(false);
-  // const [hideMenu, setHideMenu] = useState<boolean>(false);
   const [imageType, setImageType] = useState<ImageType>('origin');
   const [listVisible, setListVisible] = useState(false);
-  const [closeMenu, setCloseMenu] = useState(true);
 
   const imagePaths = {
     origin: '/images/IMG_2204.jpg',
@@ -32,17 +29,10 @@ export const Main: React.FC<Props> = ({ showMenu, setShowMenu }) => {
     if (showMenu) {
       setShowMenu(false);
       setListVisible(false);
-      setCloseMenu(true);
-      // window.scrollTo(window.innerWidth / 2, window.scrollY);
     } else {
       setShowMenu(true);
-      setCloseMenu(false);
     }
   };
-
-  // const closeMenu = () => {
-  //   setHideMenu(true);
-  // }
 
   useEffect(() => {
     const preloadImages = [
@@ -75,21 +65,25 @@ export const Main: React.FC<Props> = ({ showMenu, setShowMenu }) => {
   return (
     <div className='main'>
       <div className={classNames('container', {
-        'show-image': showImage,
         'show-menu': showMenu,
-        'is-closed': closeMenu,
+        'show-image': showImage,
         [imageType]: true
       })}>
         <img
           src={showMenu ? '/close1.png' : '/menu.png'}
-          className={classNames('burger-button', { 'is-active': showMenu })}
+          className={classNames('burger-button', {
+            'is-active': showMenu,
+          })}
           onClick={toggleMenu}
           alt='burger-menu icon'
         />
 
-        <img src={imagePaths[imageType]} className='image' alt='img' />
-
-        <ScrollReminder />
+        <img src={imagePaths[imageType]}
+          className={classNames(
+            'image', {
+            'active-menu': showMenu,
+          })}
+          alt='img' />
 
         <List
           listVisible={listVisible}
@@ -98,8 +92,9 @@ export const Main: React.FC<Props> = ({ showMenu, setShowMenu }) => {
           setImageType={setImageType}
         />
         <Information />
+
+        <ScrollReminder />
       </div>
-      {/* <CommentPage /> */}
     </div>
   )
 }
