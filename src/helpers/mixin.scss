@@ -1,6 +1,13 @@
 //be carefull, if you open a comment -
 //check opening bgi size and burger-button position
 
+@mixin onPhone360x640-safari {
+  @media (min-width: 360px) 
+  and (min-height: 640px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
 
 @mixin onPhone360x640 {
   @media (min-width: 360px)

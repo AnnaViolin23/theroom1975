@@ -9,15 +9,34 @@
   flex-direction: column;
 
   position: absolute;
-  width: 0;
-  height: 0;
+  width: 100wh;
+  // height: 100vh;
   background-color: #fff;
   z-index: 2;
   overflow: hidden;
-  transition: height 1s ease-in;
 
   @include onDesktop1280x720 {
     transform: scale(1.2);
+  }
+
+  &__open {
+    // top: 0px;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;  
+    opacity: 1;
+    transition: height .8s ease-in;
+  
+    // .bgi-menu__header,
+    // .bgi-menu__label {
+    // }
+  }
+
+  &__closed {
+    height: 0;
+    width: 100vw;
+    transition: height .8s ease-in;
   }
 
   &__header {
@@ -119,18 +138,36 @@
   }
 }
 
-.show-menu .bgi-menu {
-  // top: 0px;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  transition: height 1s ease-in;
 
-  // .bgi-menu__header,
-  // .bgi-menu__label {
-  // }
-}
+// .close-menu .bgi-menu {
+//   // top: 0px;
+//   // position: fixed;
+//   // width: 100vw;
+//   // height: 100vh;
+//   // overflow: hidden;
+//   // animation: close 1s ease-in;
+//   animation-name: close;
+//   animation-duration: 1s;
+//   animation-timing-function: ease-in;
+//   animation-iteration-count: 1;
+//   // .bgi-menu__header,
+//   // .bgi-menu__label {
+//   // }
+// }
+
+// @keyframes close {
+
+//   0% {
+//     height: 100vh;
+
+//   }
+
+//   100% {
+//     height: 0vh;
+//     // width: 0;
+
+//   }
+// }
 
 // .bgi-menu.is-closed {
 //   // display: none;

@@ -1,10 +1,16 @@
 @import '../../helpers/mixin.scss';
 
+$heightChromeMobile: 85vh;
+$heightSafariMobile: 90vh;
+$defaultHeight: 100vh;
+
 .opening {
+  position: relative;
+
   display: flex;
   justify-content: center;
   text-align: center;
-  height: 100vh;
+  height: $defaultHeight;
   background-image: url(../../../public/images/main_upgrade.jpeg);
   background-repeat: no-repeat;
   background-position: center;
@@ -15,6 +21,14 @@
   animation-fill-mode: forwards;
   animation-delay: 11s;
 
+  
+
+  @include onPhone360x640 {
+    height: $heightChromeMobile;
+  }
+  @include onPhone360x640-safari {
+    height: $heightSafariMobile;
+  }
   @include onPhone360x780 {
     background-size: 250% 110%;
   }
@@ -33,10 +47,13 @@
 
   @include onTablet1024x786 {
     background-size: 180% 120%;
+    height: $defaultHeight;
   }
 
   @include onDesktop1280x720 {
     background-size: 100% 150%;
+    height: $defaultHeight;
+
   }
 }
 

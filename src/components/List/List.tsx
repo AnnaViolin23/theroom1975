@@ -7,11 +7,13 @@ import { Link } from 'react-router-dom';
 type Props = {
   imageType: ImageType;
   listVisible: boolean;
+  showMenu: boolean;
+  setShowMenu: (value: boolean) => void;
   setImageType: (value: ImageType) => void;
   setListVisible: (value: boolean) => void;
 };
 
-export const List: React.FC<Props> = ({ imageType, listVisible, setImageType, setListVisible }) => {
+export const List: React.FC<Props> = ({ imageType, listVisible, showMenu, setImageType, setListVisible, setShowMenu }) => {
 
   const menuItems = [
     { id: 'origin', label: 'origin' },
@@ -20,7 +22,11 @@ export const List: React.FC<Props> = ({ imageType, listVisible, setImageType, se
   ];
 
   return (
-    <div className="bgi-menu">
+    <div className={classNames(
+      'bgi-menu', {
+      'bgi-menu__open': showMenu,
+      'bgi-menu__closed': !showMenu
+      })}>
       <p
         className={classNames('bgi-menu__header', { 
           'is-visible': listVisible 

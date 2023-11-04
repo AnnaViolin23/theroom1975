@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ScrollReminder.scss';
 
-export const ScrollReminder = () => {
+type Props = {
+  isActive: boolean;
+  setIsActive: (value: boolean) => void;
+}
+
+export const ScrollReminder: React.FC<Props> = ({ isActive, setIsActive }) => {
   const [isMobile, setIsMobile] = useState(true);
   const topbarRef = useRef<HTMLDivElement | null>(null);
 
@@ -15,6 +20,10 @@ export const ScrollReminder = () => {
     if (topbarRef.current) {
       topbarRef.current.classList.toggle('hidden');
     }
+
+    setTimeout(() => {
+      setIsActive(false);
+    }, 2000)
   };
 
   const barText = isMobile ? "SCROLL TO EXPLORE" : "ZOOM IN TO EXPLORE";
@@ -22,6 +31,12 @@ export const ScrollReminder = () => {
 
   return (
     <div ref={topbarRef} className="topbar">
+      <img
+        src='/cross.png'
+        alt='close'
+        className='close-button'
+        onClick={closeTopBar}
+      />
       {barText}
       <label id="hideTop" onClick={closeTopBar}>
         <img src={`/${barIcon}`} alt={isMobile ? "arrow" : "zoom-in"} className={isMobile ? "icon-arrow" : "icon-zoom"} />

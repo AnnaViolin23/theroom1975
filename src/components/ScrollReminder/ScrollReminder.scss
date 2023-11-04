@@ -3,18 +3,21 @@
 .topbar {
   position: fixed;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
 
-  left: 0;
-  top: 0;
-  width: 100%;
+  left: 50%;
+  top: 50%;
+  // width: 80%;
   padding: 10px;
-  padding-left: 50px;
+  width: 80vw; 
+  height: 20vh;
+
+  // padding-left: 50px;
 
   font-family: 'Coarse Rounded', sans-serif;
-  background-color: #84bfd1;
+  background-color: #e2fcff;
   font-weight: 1000;
   color: #2b1500;
   z-index: 9;
@@ -23,43 +26,107 @@
   -webkit-box-shadow: 0 -8px 6px -6px rgb(110, 76, 47);
   -moz-box-shadow: 0 -8px 6px -6px rgb(110, 76, 47);
   box-shadow: 0 -8px 6px -6px rgb(110, 76, 47);
-  opacity: 0.86;
+  opacity: 0.85;
 
+  transform: translate(-50%, -50%);
 
-
-  
   @include onPhone360x640 {
-    transition: left 3s, opacity 2s;
+    transition: opacity .7s;
     &.hidden {
-      left: -1200px;
+      // left: -1200px;
       opacity: 0;
     }
   }
 
   @include onTablet1024x786 {
-    padding-top: 25px;
-    transform: scale(1.5);
+    // padding-top: 25px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vw; 
+    height: 20vh;
+    font-size: 26px;
+
+    // transform: scale(1.5);
   }
 
 
   @include onDesktop1280x720 {
-    padding-top: 15px;
-    top: 0;
-    width: 100%; 
+    // padding-top: 15px;
+    // top: 0;
+    width: 30%; 
+    height: 20%;
+    // left: 0;
     // width: 100vw; 
     // height: 100vh;
     font-size: 16px;
-    opacity: 0.80;
-    transition: top 2s, opacity 1s;
-    transform: scale(1.2);
+    // opacity: 0.80;
+    transform: translate(-50%, -50%);
+
+    // transition: 
+    // top 2s, 
+    // opacity 1s;
+    // transform: scale(1.2);
 
 
-    &.hidden {
-      left: 0px;
-      top: -100px; 
-      opacity: 0;
-    }
+    // &.hidden {
+    //   // left: 0px;
+    //   // top: -100px; 
+    //   opacity: 0;
+    // }
   }
+  @include onDesktop1440x900 {
+    font-size: 20px;
+
+  }
+}
+
+.close-button {
+  width: 15px;
+  transform: translate(800%, -80%);
+  &:hover {
+    cursor: pointer;
+  }
+
+  @include onPhone360x780 {
+    transform: translate(780%, -140%);
+  }
+  @include onPhone414x736 {
+    transform: translate(880%, -110%);
+
+  }
+
+  @include onPhone414x896 {
+    width: 20px;
+    transform: translate(650%, -150%);
+
+  }
+
+  @include onTablet1024x786 {
+    width: 22px;
+
+    transform: translate(1000%, -100%);
+
+  }
+
+
+  @include onDesktop1280x720 {
+    transform: translate(1000%, -100%);
+
+
+  }
+  @include onDesktop1440x900 {
+    transform: translate(850%, -80%);
+
+
+  }
+  @include onDesktop1920x1080 {
+    transform: translate(1000%, -120%);
+
+
+  }
+
+  
 }
 
 
@@ -70,6 +137,7 @@
     height: 30px;
     transition: .3s ease-in-out;
     margin-left: 20px;
+    margin-top: 5px;
     animation: pulse 1s infinite alternate;
 
     &:hover {
@@ -77,6 +145,11 @@
       cursor: pointer;
     }
 
+    @include onTablet1024x786 {
+      margin-top: 10px;
+      width: 60px;
+      height: 40px;
+    }
   }
 
   &-zoom {
@@ -101,7 +174,7 @@
   }
 
   @include onTablet1024x786 {
-    transform: scale(1.5); // Збільшуємо масштаб на 20%
+    transform: scale(1.5);
   }
 }
 
