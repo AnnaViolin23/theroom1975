@@ -19,7 +19,6 @@ export const Main: React.FC = () => {
   const [imageType, setImageType] = useState<ImageType>('origin');
   const [listVisible, setListVisible] = useState(false);
   const [isActiveScrollReminder, setIsActiveScrollToReminder] = useState(false);
-  const [isBackgroundLocked, setIsBackgroundLocked] = useState(false);
 
 
   const imagePaths = {
@@ -61,14 +60,6 @@ export const Main: React.FC = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (isActiveScrollReminder) {
-      setIsBackgroundLocked(true);
-    } else {
-      setIsBackgroundLocked(false);
-    }
-  }, [isActiveScrollReminder]);
-
 
   useEffect(() => {
     setShowMenu(false);
@@ -77,7 +68,7 @@ export const Main: React.FC = () => {
 
 
   return (
-    <div className={classNames('main', { 'locked-background': isBackgroundLocked })}>
+    <div className='main'>
       <div className={classNames('container', {
         'show-menu': showMenu,
         'show-image': showImage,
@@ -107,6 +98,7 @@ export const Main: React.FC = () => {
           showMenu={showMenu}
           setShowMenu={setShowMenu}
         />
+        
         <Information />
 
         {isActiveScrollReminder && (

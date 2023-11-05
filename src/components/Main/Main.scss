@@ -4,16 +4,6 @@
   height: 100vh;
   overflow-x: auto;
   scroll-behavior: smooth;
-
-  &.locked-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6); /* Задній фон стає напівпрозорим для підсвітки блокування */
-    z-index: 9999; /* Це значення z-index може бути налаштовано відповідно до вашого дизайну */
-  }
 }
 
 .container {
@@ -37,9 +27,7 @@
   //   justify-content: center;
   // }
 
-  // background-size: contain;
-  // background-position: top;
-  // background-repeat: no-repeat;
+
 
   @include onDesktop1280x720 {
     justify-content: center;
@@ -48,12 +36,12 @@
   &.show-image {
     opacity: 1;
     transition: opacity 4s ease-in;
-    // background-image: url(../../../public/images/IMG_2204.jpg);
-    // opacity: 1;
+
   }
 
   &.show-menu {
-    min-width: 100vw;
+    // min-width: 100vw;
+    //DONT TOUCH IT!!!
     overflow: auto;
     // justify-content: center;
     // background-image: none;
@@ -132,8 +120,6 @@
   transform: scale(1);
   transition: transform .5s ease-in;
 
-  // &:hover
-  // ,
   &.is-active {
     transform: scale(1.5);
     transition: transform .6s ease-in;
@@ -143,16 +129,6 @@
     height: 30px;
     width: 30px;
   }
-
-  // @include onPhone375x667 {
-  //   top: 10px;
-  //   right: 42px;
-  // }
-
-  // @include onPhone375x812 {
-  //   top: 10px;
-  //   right: 114px;
-  // }
 
   @include onPhone414x736 {
     height: 30px;

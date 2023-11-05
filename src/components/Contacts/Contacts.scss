@@ -1,33 +1,107 @@
+@import '../../helpers/mixin.scss';
+
+.wraper__contacts {
+  background: #efeded;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.top-bar-back__contacts {
+  position: relative;
+  height: 0px;
+  width: 80%;
+
+  &--button {
+    height: 40px;
+    width: 80px;
+    
+    font-family: "URWGroteskSCLig W03 Regular";
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 0;
+    border: 0.5px solid;
+    border-color: #000000;
+    
+    background-color: #fff;
+    transform: translateY(-10vh);
+    transition: border-color, 1s, ease-in;
+
+    &:hover {
+      cursor: pointer;
+      border: 0.5px solid;
+      border-color: #000;
+      transition: border-color, 2s, ease-in;
+    }
+
+    @include onTablet1024x786 {
+      height: 60px;
+      width: 120px;
+      font-size: 20px;
+    }
+  }
+}
+
 .contacts-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100vh;
-  background-color: #fff;
+
+  height: 60%;
+  width: 80%;
+
   font-family: "URWGroteskSCLig W03 Regular";
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: 1px;
   line-height: 1.5;
+  border: 1px solid #000;
+
+  background-color: #fff;
+  // border-radius: 3%;
+
+  @include onTablet1024x786 {
+    font-size: 22px;
+    // transform: translate(7vh, 15vh);
+  }
+
+  @include onDesktop1280x720 {
+    font-size: 24px;
+  }
+
+  @include onDesktop1920x1080 {
+    font-size: 26px;
+  }
 }
 
 .contacts-text {
-  margin: 20px;
-  font-size: 20px;
-}
-
-.contacts-links {
   margin: 10px;
+  font-size: 18px;
+
+  @include onTablet1024x786 {
+    font-size: 22px;
+  }
+
+  @include onDesktop1280x720 {
+    font-size: 22px;
+  }
+
+  @include onDesktop1920x1080 {
+    font-size: 26px;
+  }
 }
 
 .icons {
   width: 30px;
-  padding: 30px;
-  transition: scale 0.2s ease-in;
-  &:hover {
-    cursor: pointer;
-    scale: 1.2;
+  margin: 15px;
+  margin-top: 35px;
+
+  @include onTablet1024x786 {
+    width: 35px;
   }
 }
