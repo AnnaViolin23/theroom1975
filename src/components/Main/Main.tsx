@@ -53,7 +53,7 @@ export const Main: React.FC = () => {
 
     const timer = setTimeout(() => {
       setShowImage(true);
-    }, 1);
+    }, 0);
 
     return () => {
       clearTimeout(timer);
@@ -74,8 +74,18 @@ export const Main: React.FC = () => {
         'show-image': showImage,
         [imageType]: true
       })}>
+        {showMenu && (
+          <img
+            src={showMenu ? '/close1.png' : '/menu.png'}
+            className={classNames('burger-button', {
+              'is-active': showMenu,
+            })}
+            onClick={toggleMenu}
+            alt='burger-menu icon'
+          />
+        )}
         <img
-          src={showMenu ? '/close1.png' : '/menu.png'}
+          src={'/menu.png'}
           className={classNames('burger-button', {
             'is-active': showMenu,
           })}

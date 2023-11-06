@@ -7,8 +7,8 @@ export const Contacts: React.FC = () => {
   const navigate = useNavigate();
 
   const goBack = () => {
-    navigate(-1); // Перенесення на попередню сторінку
-  };
+    navigate(-1);
+  }
 
   return (
     <div className="wraper__contacts">

@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'Grotesk';
+  src: url('/src/styles/URWGroteskW03Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Nimbus';
+  src: url('../styles/NimbusSansRegular.woff') format('woff');
+}

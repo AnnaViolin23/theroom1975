@@ -19,6 +19,28 @@
     transform: scale(1.2);
   }
 
+  &__top-bar__close {
+    position: relative;
+    height: 20px;
+    width: 100%;
+  
+    &--button {
+      height: 30px;
+      width: 30px;
+          
+      transform: translate(80vw, -20vh);
+  
+      &:hover {
+        cursor: pointer;
+      }
+  
+      @include onTablet1024x786 {
+        height: 60px;
+        width: 60px;
+      }
+    }
+  }
+
   &__open {
     // top: 0px;
     position: fixed;
@@ -27,6 +49,11 @@
     overflow: hidden;  
     opacity: 1;
     transition: height .8s ease-in;
+
+    @include onPhone360x640 {
+      height: 87vh;
+      //needs to be tested
+    }
   }
 
   &__closed {
