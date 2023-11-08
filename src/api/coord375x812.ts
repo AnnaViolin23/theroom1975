@@ -1,5 +1,5 @@
 export const initialCoordinates375x812 = [
-  { x: 74, y: 58, id: 1 },
+  { x: 60, y: 42, id: 1 },
   { x: 105, y: 110, id: 2 },
   { x: 46, y: 125, id: 3 },
   { x: 190, y: 44, id: 4 },
@@ -9,7 +9,7 @@ export const initialCoordinates375x812 = [
   { x: 327, y: 160, id: 8 },
   { x: 400, y: 130, id: 9 },
   { x: 655, y: 28, id: 10 },
-  { x: 563, y: 122, id: 11 },
+  { x: 630, y: 100, id: 11 },
   { x: 685, y: 130, id: 12 },
   { x: 754, y: 117, id: 13 },
   { x: 890, y: 49, id: 14 },

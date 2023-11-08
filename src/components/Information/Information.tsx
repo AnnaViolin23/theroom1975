@@ -17,18 +17,6 @@ export const Information: React.FC = () => {
   const [left, setLeft] = useState<number>(2);
   const [initialObjects, setInitialObjects] = useState<MyObject[]>([]);
 
-  //fetching objects 
-  //doesnt work like this cause of path
-  // const getData = () => {
-  //   fetch('/objectList.json')
-  //     .then(function (response) {
-  //       return response.json();
-  //     })
-  //     .then(setInitialObjects)
-  // }
-  //end fetching
-  
-  //searching for propper ids
   const newArray = coordinates.map(coord => ({ 
     ...coord, objLink: initialObjects.find(
       obj => obj.id === coord.id,
@@ -47,15 +35,15 @@ export const Information: React.FC = () => {
     const clickY = event.clientY;
 
     if (clickX > screenWidth / 2) {
-      setLeft(-100);
+      setLeft(-180);
     } else {
-      setLeft(4)
+      setLeft(10)
     }
 
     if (clickY > screenHeight / 2) {
-      setTop(-50);
+      setTop(-125);
     } else {
-      setTop(5);
+      setTop(10);
     }
   };
 

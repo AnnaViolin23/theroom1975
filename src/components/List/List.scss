@@ -2,13 +2,13 @@
 
 .bgi-menu {
   display: flex;
+  position: fixed;
   justify-content: center;
   align-items: center;
   // text-align: center;
   align-content: center;
   flex-direction: column;
 
-  position: fixed;
   width: 100wh;
   // height: 100vh;
   background-color: #fff;
@@ -20,23 +20,65 @@
   }
 
   &__top-bar__close {
-    position: relative;
+    // position: absolute;
+    top: -24vh;
+    left: -12vw;
     height: 20px;
     width: 100%;
-  
+    bottom: 0;
+
+    @include onDesktop1280x720 {
+    }
+
     &--button {
-      height: 30px;
-      width: 30px;
-          
-      transform: translate(80vw, -20vh);
-  
+      position: absolute;
+      top: 4vh;
+      right: 7.5vw; 
+      height: 20px;
+      width: 20px;
+
       &:hover {
         cursor: pointer;
       }
-  
+
+      @include onPhone414x736 {
+        top: 3.5vh;
+        right: 7vw; 
+      }
+
+      @include onPhone414x896 {
+        top: 3vh;
+      }
+
       @include onTablet1024x786 {
-        height: 60px;
-        width: 60px;
+        top: 2.5vh;
+        right: 3.5vw; 
+        height: 30px;
+        width: 30px;
+      }
+
+      @include onDesktop1280x720 {
+        position: relative;
+        left: 14vw; 
+        top: -24vh;
+        height: 25px;
+        width: 25px;
+      }
+
+      @include onDesktop1366x768 {
+        left: 14vw; 
+        top: -24vh;
+      }
+      
+      @include onDesktop1440x900 {
+        left: 11vw; 
+        top: -27vh;
+      }
+      @include onDesktop1920x1080 {
+        left: 14.5vw; 
+        top: -25.5vh;
+        height: 30px;
+        width: 30px;
       }
     }
   }
@@ -45,15 +87,10 @@
     // top: 0px;
     position: fixed;
     width: 100vw;
-    height: 100vh;
-    overflow: hidden;  
+    height: var(--bgi-menu__open-height);
+    overflow: hidden;
     opacity: 1;
     transition: height .8s ease-in;
-
-    @include onPhone360x640 {
-      height: 87vh;
-      //needs to be tested
-    }
   }
 
   &__closed {
@@ -72,11 +109,15 @@
     text-decoration: none;
     color: black;
     opacity: 1;
-    // transition: color 0.2s;
 
     line-height: 20px;
     letter-spacing: 2px;
     position: relative;
+
+    @include onTablet1024x786 {
+      font-size: 26px;
+      margin: 35px 0px 35px;
+    }
 
     &:hover {
       cursor: pointer;
@@ -101,19 +142,14 @@
     }
   }
 
-
   &__items {
     max-height: 1px;
     overflow-y: hidden;
-    // opacity: 0;
     transition: max-height 1.5s ease;
-    // transition-delay: 300ms;
 
     &.is-visible {
       max-height: 100vh;
-      // opacity: 1;
       transition: max-height 1.5s ease;
-      // transition-delay: 300ms;
     }
   }
 
@@ -124,11 +160,8 @@
     text-align: center;
     margin: 0;
     margin: 6px 6px 6px;
-    // text-wrap: nowrap;
     list-style: none;
     transition: color 0.3s;
-
-    // gap: 2px;
 
     &:hover {
       transition: color 0.3s;
@@ -137,66 +170,19 @@
 
     &.is-active {
       transition: color 0.3s;
-
       color: rgb(212, 0, 0);
     }
-
-    // @include onTablet1024x786 {
-    //   margin: 6px 9px 0px;
-    // }
-
-    // @include onDesktop1280x720 {
-    //   margin: 7px 9px 1px;
-    // }
-
-    // @include onDesktop1440x900 {
-    //   margin: 8px 9px 1px;
-    // }
   }
 
   &__label {
     font-size: 15px;
     margin: 4px 4px 4px;
     cursor: pointer;
+
+    @include onTablet1024x786 {
+      font-size: 22px;
+      margin: 8px 0px 5px;
+
+    }
   }
 }
-
-
-// .close-menu .bgi-menu {
-//   // top: 0px;
-//   // position: fixed;
-//   // width: 100vw;
-//   // height: 100vh;
-//   // overflow: hidden;
-//   // animation: close 1s ease-in;
-//   animation-name: close;
-//   animation-duration: 1s;
-//   animation-timing-function: ease-in;
-//   animation-iteration-count: 1;
-//   // .bgi-menu__header,
-//   // .bgi-menu__label {
-//   // }
-// }
-
-// @keyframes close {
-
-//   0% {
-//     height: 100vh;
-
-//   }
-
-//   100% {
-//     height: 0vh;
-//     // width: 0;
-
-//   }
-// }
-
-// .bgi-menu.is-closed {
-//   // display: none;
-//   width: 0;
-//   height: 0;
-//   opacity: 0;
-//   transition: height 1s ease-in;
-//   transition-delay: 500ms;
-// }

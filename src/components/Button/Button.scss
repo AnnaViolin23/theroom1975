@@ -3,23 +3,23 @@
 .round-button {
   position: absolute;
   display: block;
-  width: 8px;
-  height: 8px;
+  width: 30px;
+  height: 30px;
 
-  @include onTablet1024x786 {
-    width: 7px;
-    height: 7px;
-  }
+  // @include onTablet1024x786 {
+  //   width: 13px;
+  //   height: 13px;
+  // }
 
-  @include onDesktop1280x720 {
-    width: 9px;
-    height: 9px;
-  }
+  // @include onDesktop1280x720 {
+  //   width: 9px;
+  //   height: 9px;
+  // }
 
-  @include onDesktop1920x1080 {
-    width: 12px;
-    height: 12px;
-  }
+  // @include onDesktop1920x1080 {
+  //   width: 12px;
+  //   height: 12px;
+  // }
 
   border-radius: 50%;
   background-color: #cd9191;
@@ -43,7 +43,7 @@
 
 
 
-  opacity: 0.3;
+  // opacity: 0.25;
   // display: none;
   //DELETE
 

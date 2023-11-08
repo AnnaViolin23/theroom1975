@@ -2,12 +2,16 @@
 
 .wraper__contacts {
   background: #efeded;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
+
+  @include onTablet1024x786 {
+    height: 100vh;
+  }
 }
 
 .top-bar-back__contacts {

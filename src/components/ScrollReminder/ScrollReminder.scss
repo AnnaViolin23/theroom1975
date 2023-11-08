@@ -31,7 +31,7 @@
   transform: translate(-50%, -50%);
 
   @include onPhone360x640 {
-    transition: opacity .7s;
+    transition: opacity .5s;
     &.hidden {
       // left: -1200px;
       opacity: 0;

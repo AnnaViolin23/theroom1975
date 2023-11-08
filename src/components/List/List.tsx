@@ -1,8 +1,9 @@
 import classNames from 'classnames';
 import { ImageType } from '../../types/ImageType';
 import './List.scss';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { setMenuHeight } from '../../helpers/setMenuheight';
 
 type Props = {
   imageType: ImageType;
@@ -20,6 +21,10 @@ export const List: React.FC<Props> = ({ imageType, listVisible, showMenu, setIma
     { id: 'raw', label: 'black&white' },
     { id: 'glow', label: 'neon' },
   ];
+
+  useEffect(() => {
+    setMenuHeight();
+  })
 
   return (
     <>
@@ -47,7 +52,6 @@ export const List: React.FC<Props> = ({ imageType, listVisible, showMenu, setIma
         >
           ERA CHANGE
         </p>
-        {/* {listVisible && ( */}
         <div className={classNames("bgi-menu__items", { 'is-visible': listVisible })}>
           {menuItems.map((menuItem) => (
             <div className={classNames("bgi-menu__item", { 'is-active': imageType === menuItem.id })}
@@ -61,7 +65,6 @@ export const List: React.FC<Props> = ({ imageType, listVisible, showMenu, setIma
             </div>
           ))}
         </div>
-        {/* )} */}
 
         <Link className="bgi-menu__header" to="/discuss">
           DISCUSS

@@ -19,24 +19,45 @@
 
   // max-width: 100%;
   min-width: 1025px;
-  overflow-x: auto;
+  // overflow-x: auto;
+  //NEEDS TO BE TESTED
   opacity: 0;
-  transition: opacity 3s ease-in;
+  transition: opacity 3s ease-in-out;
 
-  // @include onDesktop1280x720 {
-  //   justify-content: center;
-  // }
+  @include onPhone414x896 {
+    width: 414px;
+    height: 896px;
+  }
 
-
+  @include onTablet1024x786 {
+    width: 786px;
+    height: 1024px;
+  }
 
   @include onDesktop1280x720 {
     justify-content: center;
+    width: 1280px;
+    height: 720px;
+  }
+
+  @include onDesktop1366x768 {
+    width: 1366px;
+    height: 768px;
+  }
+
+  @include onDesktop1440x900 {
+    width: 1440px;
+    height: 900px;
+  }
+
+  @include onDesktop1920x1080 {
+    width: 1920px;
+    height: 1080px;
   }
 
   &.show-image {
     opacity: 1;
-    transition: opacity 4s ease-in;
-
+    transition: opacity 3s ease-in-out;
   }
 
   &.show-menu {
@@ -45,7 +66,7 @@
     overflow: auto;
     // justify-content: center;
     // background-image: none;
-    
+
   }
 }
 
@@ -56,9 +77,6 @@
   // justify-content: center;
   // align-items: center;
   // align-content: center;
-
-  box-sizing: border-box;
-
   opacity: 1;
   overflow-x: auto;
   min-width: 1025px;
@@ -91,10 +109,28 @@
 
   @include onTablet1024x786 {
     min-width: 1640px;
+    height: 1024px;
   }
 
   @include onDesktop1280x720 {
-    height: 100vh;
+    // height: 100vh;
+    min-width: 1154px;
+    height: 720px;
+  }
+
+  @include onDesktop1366x768 {
+    min-width: 1231px;
+    height: 768px;
+  }
+
+  @include onDesktop1440x900 {
+    min-width: 1440px;
+    height: 900px;
+  }
+
+  @include onDesktop1920x1080 {
+    min-width: 1731px;
+    height: 1080px;
   }
 }
 
@@ -123,45 +159,41 @@
   }
 
   @include onTablet1024x786 {
-
+    top: 30px;
+    right: 30px;
     height: 40px;
     width: 40px;
     font-size: 14px;
   }
 
   @include onDesktop1280x720 {
-    top: 20px;
-    right: 85px;
+    top: 3vh;
+    left: 7vw;
 
     transition: transform .3s ease-in;
 
-    &:hover, &.is-active {
+    &:hover,
+    &.is-active {
       transform: scale(1.15);
       transition: transform .3s ease-in;
     }
   }
 
   @include onDesktop1366x768 {
-    top: 22px;
-    right: 90px;
-    height: 30px;
-    width: 30px;
-
+    height: 35px;
+    width: 35px;
   }
 
   @include onDesktop1440x900 {
-    top: 29px;
-    right: 32px;
-    height: 32px;
-    width: 32px;
+    left: 3vw;
+    height: 40px;
+    width: 40px;
   }
 
   @include onDesktop1920x1080 {
-    top: 32px;
-    right: 125px;
-    height: 35px;
-    width: 35px;
-    font-size: 24px;
+    left: 7vw;
+    height: 45px;
+    width: 45px;
   }
 
   &.is-active {

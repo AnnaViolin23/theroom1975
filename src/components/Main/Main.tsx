@@ -6,12 +6,7 @@ import { Information } from '../Information/Information';
 import { ImageType } from '../../types/ImageType';
 import { List } from '../List/List';
 import { ScrollReminder } from '../ScrollReminder/ScrollReminder';
-
-
-// type Props = {
-//   showMenu: boolean;
-//   setShowMenu: (value: boolean) => void;
-// }
+import { setMenuHeight } from '../../helpers/setMenuheight';
 
 export const Main: React.FC = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
@@ -37,6 +32,7 @@ export const Main: React.FC = () => {
   };
 
   useEffect(() => {
+    setMenuHeight();
     const preloadImages = [
       '/images/IMG_2204.jpg',
       '/images/IMG_2204_b&w.png',
@@ -49,15 +45,7 @@ export const Main: React.FC = () => {
     });
 
     setIsActiveScrollToReminder(true);
-
-
-    const timer = setTimeout(() => {
-      setShowImage(true);
-    }, 0);
-
-    return () => {
-      clearTimeout(timer);
-    };
+    setShowImage(true);
   }, []);
 
 
@@ -74,6 +62,7 @@ export const Main: React.FC = () => {
         'show-image': showImage,
         [imageType]: true
       })}>
+
         {showMenu && (
           <img
             src={showMenu ? '/close1.png' : '/menu.png'}
@@ -84,6 +73,7 @@ export const Main: React.FC = () => {
             alt='burger-menu icon'
           />
         )}
+
         <img
           src={'/menu.png'}
           className={classNames('burger-button', {
@@ -108,7 +98,7 @@ export const Main: React.FC = () => {
           showMenu={showMenu}
           setShowMenu={setShowMenu}
         />
-        
+
         <Information />
 
         {isActiveScrollReminder && (
