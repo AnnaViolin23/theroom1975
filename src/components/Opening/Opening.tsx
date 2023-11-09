@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Opening.scss';
 import { Link } from 'react-router-dom';
-import { setOpeningHeight } from '../../helpers/setOpeningHeight';
+import classNames from 'classnames';
 
 const phrases = [
   "LADIES AND\nGENTLEMEN",
@@ -17,13 +17,21 @@ type Props = {
 export const Opening: React.FC<Props> = ({ showMain, setShowMain }) => {
   const [phraseIndex, setPhraseIndex] = useState<number>(0);
   const [showWarning, setShowWarning] = useState(true);
+  const isMobile = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const isChrome = /Chrome|CriOS/i.test(navigator.userAgent);
+  const isSafari = /^((?!Chrome|CriOS|Firefox|Edg|OPR).)*Safari/i.test(navigator.userAgent);
 
   const handleContinue = () => {
     setShowWarning(false);
   };
 
   useEffect(() => {
-    let showMainTimer: NodeJS.Timeout; 
+    const isChromeOrSafari = /Chrome|CriOS|Safari/.test(navigator.userAgent);
+    let showMainTimer: NodeJS.Timeout;
+
+    if (isChromeOrSafari) {
+      setShowWarning(false);
+    }
 
     if (!showWarning) {
       showMainTimer = setTimeout(() => {
@@ -34,28 +42,17 @@ export const Opening: React.FC<Props> = ({ showMain, setShowMain }) => {
     return () => {
       clearTimeout(showMainTimer);
     };
-  }, [showMain, setShowMain, showWarning]);
+  }, [setShowMain, showWarning]);
 
   useEffect(() => {
-    const isChromeOrSafari = /Chrome|CriOS|Safari/.test(navigator.userAgent);
-
-    if (isChromeOrSafari) {
-      setShowWarning(false);
-    } else {
-      setOpeningHeight();
-    }
-
     const timer = setInterval(() => {
       setPhraseIndex((prevIndex) =>
         prevIndex < phrases.length - 1 ? prevIndex + 1 : 0
       );
     }, 500);
 
-    window.addEventListener("resize", setOpeningHeight); 
-
     return () => {
       clearInterval(timer);
-      window.removeEventListener("resize", setOpeningHeight);
     };
   }, []);
 
@@ -63,15 +60,19 @@ export const Opening: React.FC<Props> = ({ showMain, setShowMain }) => {
     <>
       {showWarning && (
         <div className='warning-modal'>
-          <p>We kindly suggest using Chrome or Safari as your browser for an enhanced website experience and smoother interaction.</p>
+          <p>we kindly suggest using chrome or safari as your browser for an enhanced website experience and smoother interaction</p>
           <Link to='/' onClick={handleContinue}>
-            <button>Continue</button>
+            <button>CONTINUE</button>
           </Link>
         </div>
       )}
 
       {!showWarning && (
-        <div className="opening">
+        <div className={classNames('opening', {
+          'mobile-safari': isMobile && isSafari,
+          'mobile-chrome': isMobile && isChrome,
+        })}
+        >
           {phrases.map((phrase, index) => (
             <h1
               key={index}
@@ -83,7 +84,7 @@ export const Opening: React.FC<Props> = ({ showMain, setShowMain }) => {
             </h1>
           ))}
         </div>
-       )}
+      )}
     </>
   );
 };

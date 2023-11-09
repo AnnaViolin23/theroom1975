@@ -33,21 +33,29 @@
 
 .opening {
   // position: relative;
-
   display: flex;
   justify-content: center;
   text-align: center;
-  height: var(--opening-height, 100vh);
-  // height: 100vh;
+  height: 100vh;
+
   background-image: url(../../../public/images/main_upgrade.jpeg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 250% 130%;
+
   animation-name: zoomInBackground, changeBackgroundImage;
   animation-duration: 7s, 2s;
   animation-timing-function: ease;
   animation-fill-mode: forwards;
   animation-delay: 11s;
+
+  &.mobile-safari {
+    height: 90vh;
+  }
+  
+  &.mobile-chrome {
+    height: 85vh;
+  }
 
   @include onPhone360x780 {
     background-size: 250% 110%;

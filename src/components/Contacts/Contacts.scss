@@ -2,7 +2,7 @@
 
 .wraper__contacts {
   background: #efeded;
-  height: 90vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,6 +105,11 @@
   width: 30px;
   margin: 15px;
   margin-top: 35px;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   @include onTablet1024x786 {
     width: 35px;
