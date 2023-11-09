@@ -61,8 +61,8 @@ export const Main: React.FC = () => {
 
     const preloadCallback = () => {
       if (!isInitialLoad) {
-        setIsActiveScrollToReminder(true);
-        setIsInitialLoad(true);
+        setIsActiveScrollToReminder(false);
+        setIsInitialLoad(false);
       }
       setShowImage(true);
     };
