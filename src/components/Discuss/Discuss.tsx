@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import './Discuss.scss'
 import React from 'react';
 import Safe from 'react-safe';

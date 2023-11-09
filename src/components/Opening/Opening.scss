@@ -1,12 +1,44 @@
 @import '../../helpers/mixin.scss';
 
+.warning-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80vw;
+  transform: translate(-50%, -50%);
+  font-family: 'Grotesk', sans-serif;
+
+  color: white;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+
+  p {
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+
+  button {
+    font-family: 'Grotesk', sans-serif;
+
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+}
+
 .opening {
-  position: relative;
+  // position: relative;
 
   display: flex;
   justify-content: center;
   text-align: center;
-  height: var(--opening-height);
+  height: var(--opening-height, 100vh);
+  // height: 100vh;
   background-image: url(../../../public/images/main_upgrade.jpeg);
   background-repeat: no-repeat;
   background-position: center;
@@ -24,14 +56,6 @@
   @include onPhone375x667 {
     background-size: 260% 130%;
   }
-
-  // @include onPhone375x812 {
-  //   background-size: 90% 160%;
-  // }
-
-  // @include onPhone414x896 {
-  //   background-size: 80% 150%;
-  // }
 
   @include onTablet1024x786 {
     background-size: 180% 120%;
@@ -54,10 +78,6 @@
   @include onPhone375x667 {
     font-size: 16px;
   }
-
-  // @include onPhone375x812 {
-  //   font-size: 17px;
-  // }
 
   @include onPhone414x736 {
     font-size: 18px;
@@ -91,9 +111,11 @@
     @include onPhone375x667 {
       font-size: 24px;
     }
+
     @include onTablet1024x786 {
       font-size: 30px;
     }
+
     @include onDesktop1920x1080 {
       font-size: 36px;
     }

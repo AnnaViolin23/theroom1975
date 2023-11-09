@@ -28,14 +28,24 @@
     bottom: 0;
 
     @include onDesktop1280x720 {
+      // position: relative;
+      left: 0.5vh;
+      top: -39vh;
     }
 
     &--button {
-      position: absolute;
+      position: fixed;
+      display: none;
       top: 4vh;
-      right: 7.5vw; 
+      right: 7.5vw;
       height: 20px;
       width: 20px;
+      animation: buttonAnimationOut 0.8s ease-in-out forwards;
+
+      &.active {
+        display: block;
+        animation: buttonAnimationIn 0.8s ease-in-out forwards;
+      }
 
       &:hover {
         cursor: pointer;
@@ -43,7 +53,7 @@
 
       @include onPhone414x736 {
         top: 3.5vh;
-        right: 7vw; 
+        right: 7vw;
       }
 
       @include onPhone414x896 {
@@ -51,32 +61,27 @@
       }
 
       @include onTablet1024x786 {
-        top: 2.5vh;
-        right: 3.5vw; 
+        top: 3.5vh;
+        right: 4.5vw;
         height: 30px;
         width: 30px;
       }
 
       @include onDesktop1280x720 {
-        position: relative;
-        left: 14vw; 
-        top: -24vh;
+        left: 14vw;
+        top: 12vh;
         height: 25px;
         width: 25px;
       }
 
-      @include onDesktop1366x768 {
-        left: 14vw; 
-        top: -24vh;
-      }
-      
       @include onDesktop1440x900 {
-        left: 11vw; 
-        top: -27vh;
+        left: 11vw;
+        top: 7vw;
       }
+
       @include onDesktop1920x1080 {
-        left: 14.5vw; 
-        top: -25.5vh;
+        left: 14.5vw;
+        top: 6.2vw;
         height: 30px;
         width: 30px;
       }
@@ -184,5 +189,32 @@
       margin: 8px 0px 5px;
 
     }
+  }
+}
+
+@keyframes buttonAnimationIn {
+  0% {
+    opacity: 0;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    display: block;
+  }
+}
+@keyframes buttonAnimationOut {
+  0% {
+    display: block;
+  }
+
+  1% {
+    opacity: 0;
+    display: none;
+  }
+  100% {
+    display: none;
   }
 }

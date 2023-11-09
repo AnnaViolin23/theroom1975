@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useEffect, useState } from 'react'
 import './Main.scss'
 import classNames from 'classnames';
@@ -14,13 +14,15 @@ export const Main: React.FC = () => {
   const [imageType, setImageType] = useState<ImageType>('origin');
   const [listVisible, setListVisible] = useState(false);
   const [isActiveScrollReminder, setIsActiveScrollToReminder] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(false);
 
-
-  const imagePaths = {
-    origin: '/images/IMG_2204.jpg',
-    raw: '/images/IMG_2204_b&w.png',
-    glow: '/images/IMG_2204_glow.png',
-  };
+  const imagePaths = useMemo(() => {
+    return {
+      origin: '/images/IMG_2204.jpg',
+      raw: '/images/IMG_2204_b&w.png',
+      glow: '/images/IMG_2204_glow.png',
+    };
+  }, []);
 
   const toggleMenu = () => {
     if (showMenu) {
@@ -31,23 +33,42 @@ export const Main: React.FC = () => {
     }
   };
 
+  const preloadImages = useCallback((
+    paths: Record<string, string>,
+    callback: () => void
+  ) => {
+    const loadedImages: Record<string, boolean> = {};
+
+    const preloadCallback = () => {
+      loadedImages[imageType] = true;
+
+      if (Object.values(loadedImages).every(Boolean)) {
+        callback();
+      }
+    };
+
+    for (const imageType in paths) {
+      if (paths.hasOwnProperty(imageType)) {
+        const preloadImage = new Image();
+        preloadImage.src = paths[imageType];
+        preloadImage.onload = preloadCallback;
+      }
+    }
+  }, [imageType]);
+
   useEffect(() => {
     setMenuHeight();
-    const preloadImages = [
-      '/images/IMG_2204.jpg',
-      '/images/IMG_2204_b&w.png',
-      '/images/IMG_2204_glow.png'
-    ];
 
-    preloadImages.forEach((imageSrc) => {
-      const preloadImage = new Image();
-      preloadImage.src = imageSrc;
-    });
-
-    setIsActiveScrollToReminder(true);
-    setShowImage(true);
-  }, []);
-
+    const preloadCallback = () => {
+      if (!isInitialLoad) {
+        setIsActiveScrollToReminder(true);
+        setIsInitialLoad(true);
+      }
+      setShowImage(true);
+    };
+  
+    preloadImages(imagePaths, preloadCallback);
+  }, [imagePaths, preloadImages, isInitialLoad]);
 
   useEffect(() => {
     setShowMenu(false);
@@ -56,6 +77,7 @@ export const Main: React.FC = () => {
 
 
   return (
+
     <div className='main'>
       <div className={classNames('container', {
         'show-menu': showMenu,

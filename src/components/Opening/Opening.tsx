@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Opening.scss';
+import { Link } from 'react-router-dom';
+import { setOpeningHeight } from '../../helpers/setOpeningHeight';
 
 const phrases = [
   "LADIES AND\nGENTLEMEN",
@@ -7,37 +9,49 @@ const phrases = [
   "ROOM\nof\nTHE 1975"
 ];
 
-const setOpeningHeight = () => {
-  const isMobile = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  const isChrome = /Chrome|CriOS/i.test(navigator.userAgent);
-  const isSafari = /^((?!Chrome|CriOS|Firefox|Edg|OPR).)*Safari/i.test(navigator.userAgent);
-  const openingElement = document.querySelector(".opening") as HTMLElement | null;
+type Props = {
+  showMain: boolean;
+  setShowMain: (value: boolean) => void;
+}
 
-  if (openingElement) {
-    if (isMobile && isSafari) {
-      openingElement.style.setProperty('--opening-height', '90vh');
-    } else if (isMobile && isChrome) {
-      openingElement.style.setProperty('--opening-height', '85vh');
-    } else {
-      openingElement.style.setProperty('--opening-height', '100vh');
-    }
-  }
-  
-};
-
-export const Opening: React.FC = () => {
+export const Opening: React.FC<Props> = ({ showMain, setShowMain }) => {
   const [phraseIndex, setPhraseIndex] = useState<number>(0);
+  const [showWarning, setShowWarning] = useState(true);
+
+  const handleContinue = () => {
+    setShowWarning(false);
+  };
 
   useEffect(() => {
+    let showMainTimer: NodeJS.Timeout; 
+
+    if (!showWarning) {
+      showMainTimer = setTimeout(() => {
+        setShowMain(true);
+      }, 13500);
+    }
+
+    return () => {
+      clearTimeout(showMainTimer);
+    };
+  }, [showMain, setShowMain, showWarning]);
+
+  useEffect(() => {
+    const isChromeOrSafari = /Chrome|CriOS|Safari/.test(navigator.userAgent);
+
+    if (isChromeOrSafari) {
+      setShowWarning(false);
+    } else {
+      setOpeningHeight();
+    }
+
     const timer = setInterval(() => {
       setPhraseIndex((prevIndex) =>
         prevIndex < phrases.length - 1 ? prevIndex + 1 : 0
       );
     }, 500);
 
-    setOpeningHeight(); // Устанавливаем высоту компонента при монтировании
-
-    window.addEventListener("resize", setOpeningHeight); // Обновляем высоту при изменении размера окна
+    window.addEventListener("resize", setOpeningHeight); 
 
     return () => {
       clearInterval(timer);
@@ -47,18 +61,29 @@ export const Opening: React.FC = () => {
 
   return (
     <>
-      <div className="opening">
-        {phrases.map((phrase, index) => (
-          <h1
-            key={index}
-            className={`animated-phrase ${phraseIndex === index ? "active" : ""} ${index === phrases.length - 1 ? "last-phrase" : ""
-              }`}
-            style={{ animationDelay: `${index * 4.5}s` }}
-          >
-            {phrase}
-          </h1>
-        ))}
-      </div>
+      {showWarning && (
+        <div className='warning-modal'>
+          <p>We kindly suggest using Chrome or Safari as your browser for an enhanced website experience and smoother interaction.</p>
+          <Link to='/' onClick={handleContinue}>
+            <button>Continue</button>
+          </Link>
+        </div>
+      )}
+
+      {!showWarning && (
+        <div className="opening">
+          {phrases.map((phrase, index) => (
+            <h1
+              key={index}
+              className={`animated-phrase ${phraseIndex === index ? "active" : ""} ${index === phrases.length - 1 ? "last-phrase" : ""
+                }`}
+              style={{ animationDelay: `${index * 4.5}s` }}
+            >
+              {phrase}
+            </h1>
+          ))}
+        </div>
+       )}
     </>
   );
 };

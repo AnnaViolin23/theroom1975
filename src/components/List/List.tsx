@@ -39,7 +39,10 @@ export const List: React.FC<Props> = ({ imageType, listVisible, showMenu, setIma
             src='/closeList.png'
             onClick={() => setShowMenu(false)}
             alt='close list button'
-            className="bgi-menu__top-bar__close--button"
+            className={classNames(
+              'bgi-menu__top-bar__close--button', {
+              'active': showMenu
+            })}
           >
           </img>
         </div>
