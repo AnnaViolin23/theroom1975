@@ -9,18 +9,13 @@
 .container {
   position: relative;
   display: flex;
-  // justify-content: center;
-  //DONT TOUCH IT!!!!!!
-  //makes coordinates on mobile *****
+  //don't set justify-content: center, it affects mobile coords
   align-items: flex-start;
   align-content: center;
   box-sizing: border-box;
-  // height: 100vh;
-
-  // max-width: 100%;
   min-width: 1025px;
-  // overflow-x: auto;
-  //NEEDS TO BE TESTED
+  // overflow-x: auto; helps to take away extra scroll 
+  // on non Chrome-Safari browsers, but affects sidebar position
   opacity: 0;
   transition: opacity 3s ease-in-out;
 
@@ -56,33 +51,22 @@
   }
 
   &.show-image {
-    
     overflow-x: auto;
-    // position: fixed;
     opacity: 1;
     transition: opacity 3s ease-in-out;
   }
 
   &.show-menu {
-    // min-width: 100vw;
-    //DONT TOUCH IT!!!
     overflow: auto;
-    // justify-content: center;
-    // background-image: none;
-
   }
 }
 
 
 .image {
-  // position: relative;
   display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // align-content: center;
-  opacity: 1;
-  overflow-x: auto;
   min-width: 1025px;
+  overflow-x: auto;
+  opacity: 1;
   transition: opacity 3s ease;
 
   &.show-image {
@@ -116,7 +100,6 @@
   }
 
   @include onDesktop1280x720 {
-    // height: 100vh;
     min-width: 1154px;
     height: 720px;
   }
@@ -140,17 +123,13 @@
 .burger-button {
   display: flex;
   position: fixed;
-  // justify-content: center;
-  // align-items: center;
-  // text-align: center;
-  // align-content: center;
-  font-size: 25px;
-
-  top: 20px;
-  right: 20px;
-  height: 35px;
+  
   width: 35px;
-
+  height: 35px;
+  right: 20px;
+  top: 20px;
+  
+  font-size: 25px;
   background-color: #ffffff;
   border: 0.5px solid #000000;
   padding: 5px 5px;
@@ -162,17 +141,16 @@
   }
 
   @include onTablet1024x786 {
-    top: 30px;
-    right: 30px;
     height: 40px;
     width: 40px;
+    right: 30px;
+    top: 30px;
     font-size: 14px;
   }
 
   @include onDesktop1280x720 {
     top: 3vh;
     left: 7vw;
-
     transition: transform .3s ease-in;
 
     &:hover,
@@ -183,20 +161,20 @@
   }
 
   @include onDesktop1366x768 {
-    height: 35px;
     width: 35px;
+    height: 35px;
   }
 
   @include onDesktop1440x900 {
-    left: 3vw;
-    height: 40px;
     width: 40px;
+    height: 40px;
+    left: 3vw;
   }
 
   @include onDesktop1920x1080 {
-    left: 7vw;
-    height: 45px;
     width: 45px;
+    height: 45px;
+    left: 7vw;
   }
 
   &.is-active {

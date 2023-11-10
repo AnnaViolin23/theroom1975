@@ -1,34 +1,45 @@
 @import '../../helpers/mixin.scss';
 
 .bgi-menu {
-  display: flex;
   position: fixed;
+  display: flex;
   justify-content: center;
   align-items: center;
-  // text-align: center;
   align-content: center;
   flex-direction: column;
 
-  width: 100wh;
-  // height: 100vh;
+  width: 100vw;
   background-color: #fff;
   z-index: 2;
   overflow: hidden;
-
+  
   @include onDesktop1280x720 {
     transform: scale(1.2);
   }
 
+  &.open {
+    position: fixed;
+    width: 100vw;
+    height: var(--bgi-menu\.open-height);
+    overflow: hidden;
+    opacity: 1;
+    transition: height .8s ease-in;
+  }
+
+  &.closed {
+    width: 100vw;
+    height: 0;
+    transition: height .8s ease-in;
+  }
+
   &__top-bar__close {
-    // position: absolute;
-    top: -24vh;
-    left: -12vw;
     height: 20px;
     width: 100%;
+    left: -12vw;
+    top: -24vh;
     bottom: 0;
 
     @include onDesktop1280x720 {
-      // position: relative;
       left: 0.5vh;
       top: -39vh;
     }
@@ -36,10 +47,11 @@
     &--button {
       position: fixed;
       display: none;
-      top: 4vh;
-      right: 7.5vw;
       height: 20px;
       width: 20px;
+      top: 4vh;
+      right: 7.5vw;
+
       animation: buttonAnimationOut 0.8s ease-in-out forwards;
 
       &.active {
@@ -61,17 +73,17 @@
       }
 
       @include onTablet1024x786 {
-        top: 3.5vh;
-        right: 4.5vw;
         height: 30px;
         width: 30px;
+        right: 4.5vw;
+        top: 3.5vh;
       }
 
       @include onDesktop1280x720 {
-        left: 14vw;
-        top: 12vh;
         height: 25px;
         width: 25px;
+        left: 14vw;
+        top: 12vh;
       }
 
       @include onDesktop1440x900 {
@@ -80,44 +92,29 @@
       }
 
       @include onDesktop1920x1080 {
-        left: 14.5vw;
-        top: 6.2vw;
         height: 30px;
         width: 30px;
+        left: 14.5vw;
+        top: 6.2vw;
       }
     }
   }
 
-  &__open {
-    // top: 0px;
-    position: fixed;
-    width: 100vw;
-    height: var(--bgi-menu__open-height);
-    overflow: hidden;
-    opacity: 1;
-    transition: height .8s ease-in;
-  }
-
-  &__closed {
-    height: 0;
-    width: 100vw;
-    transition: height .8s ease-in;
-  }
 
   &__header {
+    position: relative;
     margin: 6px 6px 0px;
-    text-wrap: nowrap;
     padding: 0 2px 0;
     margin: 20px 0;
+    
     font-size: 18px;
     font-weight: bold;
-    text-decoration: none;
-    color: black;
-    opacity: 1;
-
     line-height: 20px;
     letter-spacing: 2px;
-    position: relative;
+    text-decoration: none;
+    text-wrap: nowrap;
+    color: black;
+    opacity: 1;
 
     @include onTablet1024x786 {
       font-size: 26px;
@@ -169,25 +166,24 @@
     transition: color 0.3s;
 
     &:hover {
-      transition: color 0.3s;
       color: rgb(188, 188, 188);
+      transition: color 0.3s;
     }
 
     &.is-active {
-      transition: color 0.3s;
       color: rgb(212, 0, 0);
+      transition: color 0.3s;
     }
   }
 
   &__label {
+    cursor: pointer;
     font-size: 15px;
     margin: 4px 4px 4px;
-    cursor: pointer;
 
     @include onTablet1024x786 {
-      font-size: 22px;
       margin: 8px 0px 5px;
-
+      font-size: 22px;
     }
   }
 }
@@ -205,6 +201,7 @@
     display: block;
   }
 }
+
 @keyframes buttonAnimationOut {
   0% {
     display: block;

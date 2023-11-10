@@ -1,6 +1,5 @@
-import React, { useCallback, useMemo } from 'react';
-import { useEffect, useState } from 'react'
-import './Main.scss'
+import './Main.scss';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 import { Information } from '../Information/Information';
 import { ImageType } from '../../types/ImageType';
@@ -8,21 +7,26 @@ import { List } from '../List/List';
 import { ScrollReminder } from '../ScrollReminder/ScrollReminder';
 import { setMenuHeight } from '../../helpers/setMenuheight';
 
+type ImagePaths = {
+  [key: string]: string;
+};
+
 export const Main: React.FC = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [showImage, setShowImage] = useState<boolean>(false);
   const [imageType, setImageType] = useState<ImageType>('origin');
   const [listVisible, setListVisible] = useState(false);
-  const [isActiveScrollReminder, setIsActiveScrollToReminder] = useState(false);
-  const [isInitialLoad, setIsInitialLoad] = useState(false);
+  const [isActiveScrollReminder, setIsActiveScrollToReminder] = useState(true);
+  // const [isInitialLoad, setIsInitialLoad] = useState(true);
 
-  const imagePaths = useMemo(() => {
-    return {
-      origin: '/images/IMG_2204.jpg',
-      raw: '/images/IMG_2204_b&w.png',
-      glow: '/images/IMG_2204_glow.png',
-    };
-  }, []);
+  // const sessionStorageKey = 'mainComponentOpened';
+  // const isInitialLoadKey = 'isInitialLoad';
+
+  const imagePaths: ImagePaths = useMemo(() => ({
+    origin: '/images/IMG_2204.jpg',
+    raw: '/images/IMG_2204_b&w.png',
+    glow: '/images/IMG_2204_glow.png',
+  }), []);
 
   const toggleMenu = () => {
     if (showMenu) {
@@ -32,85 +36,73 @@ export const Main: React.FC = () => {
       setShowMenu(true);
     }
   };
-
-  const preloadImages = useCallback((
-    paths: Record<string, string>,
-    callback: () => void
-  ) => {
+  
+  const preloadImages = useCallback(() => {
     const loadedImages: Record<string, boolean> = {};
 
     const preloadCallback = () => {
       loadedImages[imageType] = true;
 
       if (Object.values(loadedImages).every(Boolean)) {
-        callback();
+        setShowImage(true);
       }
     };
 
-    for (const imageType in paths) {
-      if (paths.hasOwnProperty(imageType)) {
-        const preloadImage = new Image();
-        preloadImage.src = paths[imageType];
-        preloadImage.onload = preloadCallback;
-      }
+    for (const type in imagePaths) {
+      const preloadImage = new Image();
+      preloadImage.src = imagePaths[type];
+      preloadImage.onload = preloadCallback;
     }
-  }, [imageType]);
+  }, [imageType, imagePaths]);
 
-  useEffect(() => {
-    setMenuHeight();
-
-    const preloadCallback = () => {
-      if (!isInitialLoad) {
-        setIsActiveScrollToReminder(false);
-        setIsInitialLoad(false);
-      }
-      setShowImage(true);
-    };
+    useEffect(() => {
+      // const hasComponentBeenOpened = sessionStorage.getItem(sessionStorageKey);
+      // const isInitialLoad = sessionStorage.getItem(isInitialLoadKey) === 'true';
   
-    preloadImages(imagePaths, preloadCallback);
-  }, [imagePaths, preloadImages, isInitialLoad]);
+      // if (!hasComponentBeenOpened) {
+      //   setIsInitialLoad(true);
+      //   sessionStorage.setItem(sessionStorageKey, 'true');
+      //   sessionStorage.setItem(isInitialLoadKey, 'true');
+      // } else {
+      //   setIsInitialLoad(false);
+      // }
+  
+      setMenuHeight();
+      preloadImages();
+    }, [
+      preloadImages, 
+      // setIsInitialLoad
+    ]);
 
-  useEffect(() => {
-    setShowMenu(false);
-    setListVisible(false);
-  }, [imageType, setShowMenu]);
-
-
+    useEffect(() => {
+      setShowMenu(false);
+      setListVisible(false);
+    }, [imageType, setShowMenu]);
+  
   return (
-
     <div className='main'>
       <div className={classNames('container', {
         'show-menu': showMenu,
         'show-image': showImage,
-        [imageType]: true
+        [imageType]: true,
       })}>
 
-        {showMenu && (
-          <img
-            src={showMenu ? '/close1.png' : '/menu.png'}
-            className={classNames('burger-button', {
-              'is-active': showMenu,
-            })}
-            onClick={toggleMenu}
-            alt='burger-menu icon'
-          />
-        )}
-
         <img
-          src={'/menu.png'}
+          src='/menu.png'
           className={classNames('burger-button', {
             'is-active': showMenu,
           })}
           onClick={toggleMenu}
-          alt='burger-menu icon'
+          alt='burger menu icon'
         />
 
-        <img src={imagePaths[imageType]}
-          className={classNames(
-            'image', {
+        <img
+          src={imagePaths[imageType]}
+          className={classNames('image', {
             'active-menu': showMenu,
           })}
-          alt='img' />
+          alt='main img'
+        />
 
         <List
           listVisible={listVisible}
@@ -131,6 +123,5 @@ export const Main: React.FC = () => {
         )}
       </div>
     </div>
-  )
-}
-
+  );
+};

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import './Information.scss';
+import React, { useEffect, useState } from 'react';
 import { Button } from '../Button/Button';
 import { ModalWindow } from '../ModalWinndow/ModalWindow';
 import { calculateCoordinates } from '../../helpers/calculateCoordinates';
@@ -57,7 +57,6 @@ export const Information: React.FC = () => {
   useEffect(() => {
     //fetching objects
     setInitialObjects(objectList);
-    //end fetching
 
     const updatedCoordinates = calculateCoordinates();
     setCoordinates(updatedCoordinates);
@@ -74,8 +73,6 @@ export const Information: React.FC = () => {
     };
   }, []);
 
-  console.log(newArray)
-
   return (
     <div className='info'>
       {newArray.map((coord: Coordinate, index: number) => (
@@ -87,12 +84,14 @@ export const Information: React.FC = () => {
             top: `${coord.y}px`,
           }}
         >
+          
           <Button
             onClick={(event) => openModal(index, event)}
             isActive={activeButtonIndex === index}
             index={index}
             closeModal={closeModal}
           />
+
           <ModalWindow
             index={index}
             isOpen={selectedButton === index}

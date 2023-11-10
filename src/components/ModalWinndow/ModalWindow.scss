@@ -5,27 +5,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  overflow: auto;
-  // top: -2px;
-  // left: -2px;
+  
   width: 200px;
   height: 140px;
+  overflow: auto;
   backdrop-filter: blur(5px);
   font-family: 'Grotesk', sans-serif;
 
-  @include onDesktop1280x720 {
-    width: 200px;
-    height: 120px;
-  }
-
+  
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
-
+  
   opacity: 0;
   transition: opacity 0.5s;
   z-index: 1;
   
+  @include onDesktop1280x720 {
+    width: 200px;
+    height: 120px;
+  }
 
   &__name {
     font-size: 22px;
@@ -44,7 +42,7 @@
   &__explanation {
     font-size: 20px;
     height: 100%;
-    margin: 10px 10px 10px;
+    margin: 10px;
     padding-bottom: 5px;
 
     @include onDesktop1280x720 {
@@ -56,7 +54,6 @@
       margin: 5px 9px 0px;
     }
   }
-
 
   &.modal-open {
     opacity: 1;
@@ -74,13 +71,11 @@
 }
 
 .modal-content {
-  width: 100%;
-  height: 100%;
+  position: relative;
   max-width: 100%;
+  height: 100%;
 
   background-color: rgba(64, 64, 64, 0.45);
-
-  position: relative;
   transition: max-width 2s;
 
   &-container {

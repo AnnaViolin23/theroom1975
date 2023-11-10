@@ -60,9 +60,9 @@ export const Opening: React.FC<Props> = ({ showMain, setShowMain }) => {
     <>
       {showWarning && (
         <div className='warning-modal'>
-          <p>we kindly suggest using chrome or safari as your browser for an enhanced website experience and smoother interaction</p>
+          <p className='warning-modal__text'>we kindly suggest using chrome or safari as your browser for an enhanced website experience and smoother interaction</p>
           <Link to='/' onClick={handleContinue}>
-            <button>CONTINUE</button>
+            <button className='warning-modal__button'>CONTINUE</button>
           </Link>
         </div>
       )}

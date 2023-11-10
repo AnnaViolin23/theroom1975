@@ -1,13 +1,15 @@
 @import '../../helpers/mixin.scss';
 
 .wraper__contacts {
-  background: #efeded;
-  height: 100vh;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
+
+  height: 100vh;
+
+  background: #efeded;
 
   @include onTablet1024x786 {
     height: 100vh;
@@ -27,7 +29,7 @@
     font-size: 13px;
     font-weight: 600;
     color: #000;
-    border-radius: 0;
+
     border: 0.5px solid;
     border-color: #000000;
     
@@ -68,11 +70,9 @@
   border: 1px solid #000;
 
   background-color: #fff;
-  // border-radius: 3%;
 
   @include onTablet1024x786 {
     font-size: 22px;
-    // transform: translate(7vh, 15vh);
   }
 
   @include onDesktop1280x720 {

@@ -6,78 +6,52 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
-  left: 50%;
-  top: 50%;
-  // width: 80%;
-  padding: 10px;
   width: 80vw; 
   height: 20vh;
+  left: 50%;
+  top: 50%;
+  padding: 10px;
+  transform: translate(-50%, -50%);
 
-  // padding-left: 50px;
-
-  font-family: 'Coarse Rounded', sans-serif;
-  background-color: #e2fcff;
-  font-weight: 1000;
-  color: #2b1500;
-  z-index: 9;
-  font-size: 18px;
-  text-align: center;
-  -webkit-box-shadow: 0 -8px 6px -6px rgb(110, 76, 47);
-  -moz-box-shadow: 0 -8px 6px -6px rgb(110, 76, 47);
-  box-shadow: 0 -8px 6px -6px rgb(110, 76, 47);
   opacity: 0.85;
 
-  transform: translate(-50%, -50%);
+  font-family: 'Coarse Rounded', sans-serif;
+  font-weight: 1000;
+  font-size: 18px;
+  color: #2b1500;
+  background-color: #e2fcff;
+  z-index: 9;
+  box-shadow: 0 -8px 6px -6px rgb(110, 76, 47);
+  -webkit-box-shadow: 0 -8px 6px -6px rgb(110, 76, 47);
+  -moz-box-shadow: 0 -8px 6px -6px rgb(110, 76, 47);
 
   @include onPhone360x640 {
     transition: opacity .5s;
     &.hidden {
-      // left: -1200px;
       opacity: 0;
     }
   }
 
   @include onTablet1024x786 {
-    // padding-top: 25px;
+    width: 70vw; 
+    height: 20vh;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 70vw; 
-    height: 20vh;
     font-size: 26px;
-
-    // transform: scale(1.5);
   }
-
 
   @include onDesktop1280x720 {
-    // padding-top: 15px;
-    // top: 0;
     width: 30%; 
     height: 20%;
-    // left: 0;
-    // width: 100vw; 
-    // height: 100vh;
     font-size: 16px;
-    // opacity: 0.80;
     transform: translate(-50%, -50%);
-
-    // transition: 
-    // top 2s, 
-    // opacity 1s;
-    // transform: scale(1.2);
-
-
-    // &.hidden {
-    //   // left: 0px;
-    //   // top: -100px; 
-    //   opacity: 0;
-    // }
   }
+
   @include onDesktop1440x900 {
     font-size: 20px;
-
   }
 }
 
@@ -91,64 +65,53 @@
   @include onPhone360x780 {
     transform: translate(780%, -140%);
   }
+
   @include onPhone414x736 {
     transform: translate(880%, -110%);
-
   }
 
   @include onPhone414x896 {
     width: 20px;
     transform: translate(650%, -150%);
-
   }
 
   @include onTablet1024x786 {
     width: 22px;
-
     transform: translate(1000%, -100%);
-
   }
-
 
   @include onDesktop1280x720 {
     transform: translate(1000%, -100%);
-
-
   }
+
   @include onDesktop1440x900 {
     transform: translate(850%, -80%);
-
-
   }
+
   @include onDesktop1920x1080 {
     transform: translate(1000%, -120%);
-
-
   }
-
-  
 }
-
 
 .icon {
   &-arrow {
     position: relative;
     width: 40px;
     height: 30px;
-    transition: .3s ease-in-out;
     margin-left: 20px;
     margin-top: 5px;
+    transition: .3s ease-in-out;
     animation: pulse 1s infinite alternate;
 
     &:hover {
-      transform: scale(1.2);
       cursor: pointer;
+      transform: scale(1.2);
     }
 
     @include onTablet1024x786 {
-      margin-top: 10px;
       width: 60px;
       height: 40px;
+      margin-top: 10px;
     }
   }
 
@@ -166,11 +129,9 @@
     }
   }
 
-  animation: pulse 1s infinite alternate;
-
   &:hover {
-    transform: scale(1.2);
     cursor: pointer;
+    transform: scale(1.2);
   }
 
   @include onTablet1024x786 {

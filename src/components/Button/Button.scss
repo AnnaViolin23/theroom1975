@@ -5,25 +5,15 @@
   display: block;
   width: 30px;
   height: 30px;
-
-  // @include onTablet1024x786 {
-  //   width: 13px;
-  //   height: 13px;
-  // }
-
-  // @include onDesktop1280x720 {
-  //   width: 9px;
-  //   height: 9px;
-  // }
-
-  // @include onDesktop1920x1080 {
-  //   width: 12px;
-  //   height: 12px;
-  // }
-
+  
+  opacity: 0.25;
   border-radius: 50%;
   background-color: #cd9191;
   border: 0.3px solid #000;
+  
+  cursor: pointer;
+  animation: pulse 1s infinite alternate;
+  transition: opacity 0.5s;
 
   @include onTablet1024x786 {
   border: 0.5px solid #000;
@@ -37,23 +27,9 @@
   border: 1px solid #000;
   }
 
-  cursor: pointer;
-  animation: pulse 1s infinite alternate;
-  transition: opacity 0.5s;
-
-
-
-  opacity: 0.25;
-  // display: none;
-  //DELETE
-
   &:hover {
     opacity: 1;
   }
-
-  // &.active {
-  //   display: none;
-  // }
 }
 
 @keyframes pulse {

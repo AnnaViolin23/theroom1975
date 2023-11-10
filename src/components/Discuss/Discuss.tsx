@@ -16,6 +16,7 @@ export const Discuss: React.FC = () => {
       <div className='top-bar-back__dis'>
         <button onClick={goBack} className="top-bar-back__dis--button">BACK</button>
       </div>
+      
       <div className="custom-container">
         <p>Hi, guys!
           <br />Feel free to share your thoughts and wishes here. 

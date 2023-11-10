@@ -2,37 +2,37 @@
 
 .warning-modal {
   position: fixed;
+  text-align: center;
+  width: 80vw;
   top: 50%;
   left: 50%;
-  width: 80vw;
-  transform: translate(-50%, -50%);
-  font-family: 'Grotesk', sans-serif;
-
-  color: white;
   padding: 30px;
-  text-align: center;
+
+  font-family: 'Grotesk', sans-serif;
+  color: white;
+
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%);
   z-index: 9999;
 
-  p {
+  &__text {
     margin-bottom: 20px;
     font-size: 22px;
   }
 
-  button {
-    font-family: 'Grotesk', sans-serif;
-
-    background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border: none;
+  &__button {
     cursor: pointer;
+    padding: 10px 20px;
+
     font-size: 16px;
+    font-family: 'Grotesk', sans-serif;
+    color: black;
+    background-color: white;
+    border: none;
   }
 }
 
 .opening {
-  // position: relative;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -75,13 +75,23 @@
 }
 
 .animated-phrase {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  white-space: pre;
   font-family: 'Nimbus', sans-serif;
   font-size: 16px;
-  font-weight: lighter;
-  color: white;
   font-weight: normal;
-  letter-spacing: 1px;
   line-height: 1.5;
+  letter-spacing: 1px;
+  color: white;
+
+  opacity: 0;
+
+  transition: opacity 500ms ease-in-out;
+  animation: fadeInAndOut 4.5s ease-in-out forwards;
 
   @include onPhone375x667 {
     font-size: 16px;
@@ -102,15 +112,6 @@
   @include onDesktop1920x1080 {
     font-size: 30px;
   }
-
-  position: absolute;
-  top: 49%;
-  left: 50%;
-  opacity: 0;
-  animation: fadeInAndOut 4.5s ease-in-out forwards;
-  transform: translate(-50%, -50%);
-  white-space: pre;
-  transition: opacity 500ms ease-in-out;
 
   &.last-phrase {
     font-size: 20px;
@@ -147,7 +148,6 @@
 }
 
 @keyframes fadeInAndOut {
-
   0%,
   100% {
     opacity: 0;

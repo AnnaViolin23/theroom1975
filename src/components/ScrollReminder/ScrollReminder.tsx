@@ -9,6 +9,8 @@ type Props = {
 export const ScrollReminder: React.FC<Props> = ({ isActive, setIsActive }) => {
   const [isMobile, setIsMobile] = useState(true);
   const topbarRef = useRef<HTMLDivElement | null>(null);
+  const barText = isMobile ? "SCROLL TO EXPLORE" : "ZOOM IN TO EXPLORE";
+  const barIcon = isMobile ? "arrow.png" : "zoom_in.png";
 
   useEffect(() => {
     if (window.innerWidth >= 1280) {
@@ -25,9 +27,6 @@ export const ScrollReminder: React.FC<Props> = ({ isActive, setIsActive }) => {
       setIsActive(false);
     }, 2000)
   };
-
-  const barText = isMobile ? "SCROLL TO EXPLORE" : "ZOOM IN TO EXPLORE";
-  const barIcon = isMobile ? "arrow.png" : "zoom_in.png";
 
   return (
     <div ref={topbarRef} className="topbar">

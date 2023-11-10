@@ -5,15 +5,15 @@ import { useEffect, useRef } from 'react';
 type Props = {
   index: number;
   isOpen: boolean;
-  closeModal: (index: number) => void;
   top: number;
   left: number;
   name?: string;
   explanation?: string;
+  closeModal: (index: number) => void;
 }
 
 export const ModalWindow: React.FC<Props> = ({
-  index, isOpen, closeModal, top, left, name, explanation
+  index, isOpen, top, left, name, explanation, closeModal
 }) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
 
@@ -38,7 +38,6 @@ export const ModalWindow: React.FC<Props> = ({
     };
   }, [isOpen, closeModal, index]);
 
-  // console.log(explanation)
 
   return isOpen ? (
     <div
@@ -47,12 +46,6 @@ export const ModalWindow: React.FC<Props> = ({
       ref={modalRef}
     >
       <div className="modal-content">
-        {/* <span
-          className="close-modal-button"
-          onClick={closeModal}
-        >
-          &times;
-        </span> */}
         <div className="modal__content-container">
           <h2 className="modal__name">{name}</h2>
           <p className="modal__explanation">{explanation}</p>

@@ -1,7 +1,6 @@
 //be carefull, if you open a comment -
 //check opening bgi size and burger-button position
 
-
 @mixin onPhone360x640 {
   @media (min-width: 360px)
   and (min-height: 640px)  
@@ -9,6 +8,7 @@
     @content;
   }
 }
+
 @mixin onPhone360x780 {
   @media (min-width: 360px)
   and (min-height: 780px) 
@@ -32,8 +32,7 @@
     @content;
   }
 }
-//be carefull, if you open a comment -
-//check opening bgi size and burger-button position
+
 @mixin onPhone414x736 {
   @media (min-width: 414px)
   and (min-height: 736px) 
