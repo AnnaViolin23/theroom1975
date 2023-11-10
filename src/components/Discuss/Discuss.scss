@@ -44,16 +44,21 @@
 
   @include onDesktop1280x720 {
     float: left;
-    height: auto;
     width: 40%;
+    height: auto;
 
     margin-top: 80px;
     margin-left: 5%;
     font-size: 16px;
   }
 
+  @include onDesktop1366x768 {
+    font-size: 17px;
+  }
+
   @include onDesktop1440x900 {
     margin-top: 100px;
+    font-size: 18.8px;
   }
 
   @include onDesktop1920x1080 {
