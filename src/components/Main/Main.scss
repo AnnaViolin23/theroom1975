@@ -9,13 +9,14 @@
 .container {
   position: relative;
   display: flex;
-  //don't set justify-content: center, it affects mobile coords
   align-items: flex-start;
   align-content: center;
   box-sizing: border-box;
-  min-width: 1025px;
-  // overflow-x: auto; helps to take away extra scroll 
-  // on non Chrome-Safari browsers, but affects sidebar position
+  // width: 1025px;
+  overflow-x: auto; 
+  // helps to take away extra scroll 
+  // on non Chrome-Safari browsers,
+  // but affects sidebar position
   opacity: 0;
   transition: opacity 3s ease-in-out;
 
@@ -25,7 +26,7 @@
   }
 
   @include onTablet1024x786 {
-    width: 786px;
+    width: 1025px;
     height: 1024px;
   }
 
@@ -51,7 +52,10 @@
   }
 
   &.show-image {
-    overflow-x: auto;
+    overflow-y: auto;
+    // overflow-x: auto;
+    // helps to take away extra scroll 
+    // on non Chrome-Safari browsers, but affects sidebar position
     opacity: 1;
     transition: opacity 3s ease-in-out;
   }
@@ -123,12 +127,12 @@
 .burger-button {
   display: flex;
   position: fixed;
-  
+
   width: 35px;
   height: 35px;
   right: 20px;
   top: 20px;
-  
+
   font-size: 25px;
   background-color: #ffffff;
   border: 0.5px solid #000000;

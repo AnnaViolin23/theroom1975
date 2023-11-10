@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { ImageType } from '../../types/ImageType';
 import { Link } from 'react-router-dom';
-import { setMenuHeight } from '../../helpers/setMenuheight';
+import { setHeight } from '../../helpers/setHeight';
 
 type Props = {
   imageType: ImageType;
@@ -30,7 +30,7 @@ export const List: React.FC<Props> = ({
   ];
 
   useEffect(() => {
-    setMenuHeight();
+    setHeight(".bgi-menu.open", '--bgi-menu.open-height');
   })
 
   return (

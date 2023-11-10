@@ -5,7 +5,7 @@ import { Information } from '../Information/Information';
 import { ImageType } from '../../types/ImageType';
 import { List } from '../List/List';
 import { ScrollReminder } from '../ScrollReminder/ScrollReminder';
-import { setMenuHeight } from '../../helpers/setMenuheight';
+import { setMenuHeight } from '../../helpers/setMenuHeight';
 
 type ImagePaths = {
   [key: string]: string;

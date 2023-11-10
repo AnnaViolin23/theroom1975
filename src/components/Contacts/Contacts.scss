@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
 
-  height: 100vh;
+  height: var(--wraper__contacts-height);
 
   background: #efeded;
 
@@ -65,7 +65,7 @@
   font-family: 'Grotesk';
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: .1px;
   line-height: 1.5;
   border: 1px solid #000;
 
@@ -77,6 +77,7 @@
 
   @include onDesktop1280x720 {
     font-size: 24px;
+    letter-spacing: .5px;
   }
 
   @include onDesktop1920x1080 {
@@ -86,7 +87,7 @@
 
 .contacts-text {
   margin: 10px;
-  font-size: 18px;
+  font-size: 19px;
 
   @include onTablet1024x786 {
     font-size: 22px;

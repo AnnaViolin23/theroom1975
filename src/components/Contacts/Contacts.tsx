@@ -1,6 +1,7 @@
 import './Contacts.scss';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { setHeight } from '../../helpers/setHeight';
 
 export const Contacts: React.FC = () => {
   const navigate = useNavigate();
@@ -8,6 +9,10 @@ export const Contacts: React.FC = () => {
   const goBack = () => {
     navigate(-1);
   }
+
+  useEffect (() => {
+    setHeight(".wraper__contacts", '--wraper__contacts-height');
+  })
 
   return (
     <>
