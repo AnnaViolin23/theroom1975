@@ -4,123 +4,83 @@
   height: 100vh;
   overflow-x: auto;
   scroll-behavior: smooth;
+  // width: auto;
+  // margin: 0 auto;
+
+}
+
+.div {
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: relative;
+  // width: 100%;
+  // height: 100%;
+  // border: rgb(85, 255, 0) 2px solid;
+  display: flex;
+  // display: block;
+    // margin: 0 auto;
+
 }
 
 .container {
+  // margin: 0 auto;
+
+  margin: 0 auto;
+
+  // width: auto;
+
   position: relative;
   display: flex;
-  align-items: flex-start;
-  align-content: center;
+  // align-items: flex-start;
+  // align-content: center;
   box-sizing: border-box;
+  justify-content: flex-start;
   // width: 1025px;
-  overflow-x: auto; 
+  overflow-x: scroll;
   // helps to take away extra scroll 
   // on non Chrome-Safari browsers,
   // but affects sidebar position
-  opacity: 0;
-  transition: opacity 3s ease-in-out;
-
-  @include onPhone414x896 {
-    width: 414px;
-    height: 896px;
-  }
-
-  @include onTablet1024x786 {
-    width: 1025px;
-    height: 1024px;
-  }
-
-  @include onDesktop1280x720 {
-    justify-content: center;
-    width: 1280px;
-    height: 720px;
-  }
-
-  @include onDesktop1366x768 {
-    width: 1366px;
-    height: 768px;
-  }
-
-  @include onDesktop1440x900 {
-    width: 1440px;
-    height: 900px;
-  }
-
-  @include onDesktop1920x1080 {
-    width: 1920px;
-    height: 1080px;
-  }
+  // opacity: 0;
+  // transition: opacity 3s ease-in-out;
 
   &.show-image {
+    // width: auto;
+
     overflow-y: auto;
     // overflow-x: auto;
     // helps to take away extra scroll 
     // on non Chrome-Safari browsers, but affects sidebar position
-    opacity: 1;
-    transition: opacity 3s ease-in-out;
+    // opacity: 1;
+    // transition: opacity 3s ease-in-out;
   }
 
   &.show-menu {
     overflow: auto;
   }
+
+  @include onDesktop1280x720 {
+    justify-content: center;
+  }
 }
 
 
 .image {
+  position: relative;
+  // margin: 0 auto;
+
+  width: auto;
+
   display: flex;
-  min-width: 1025px;
-  overflow-x: auto;
+  height: 100%;
+  overflow-x: scroll;
+
   opacity: 1;
   transition: opacity 3s ease;
 
   &.show-image {
     opacity: 1;
     transition: opacity 2s ease-in;
-  }
-
-  @include onPhone360x780 {
-    min-width: 1252px;
-  }
-
-  @include onPhone375x667 {
-    min-width: 1070px;
-  }
-
-  @include onPhone375x812 {
-    min-width: 1300px;
-  }
-
-  @include onPhone414x736 {
-    min-width: 1180px;
-  }
-
-  @include onPhone414x896 {
-    min-width: 1440px;
-  }
-
-  @include onTablet1024x786 {
-    min-width: 1640px;
-    height: 1024px;
-  }
-
-  @include onDesktop1280x720 {
-    min-width: 1154px;
-    height: 720px;
-  }
-
-  @include onDesktop1366x768 {
-    min-width: 1231px;
-    height: 768px;
-  }
-
-  @include onDesktop1440x900 {
-    min-width: 1440px;
-    height: 900px;
-  }
-
-  @include onDesktop1920x1080 {
-    min-width: 1731px;
-    height: 1080px;
   }
 }
 

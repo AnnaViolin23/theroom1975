@@ -36,7 +36,7 @@ export const Opening: React.FC<Props> = ({ showMain, setShowMain }) => {
     if (!showWarning) {
       showMainTimer = setTimeout(() => {
         setShowMain(true);
-      }, 13500);
+      }, 500);
     }
 
     return () => {

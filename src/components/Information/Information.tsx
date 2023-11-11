@@ -79,9 +79,9 @@ export const Information: React.FC = () => {
         <div
           key={index}
           style={{
-            position: 'absolute',
+            position: 'relative',
             left: `${coord.x}px`,
-            top: `${coord.y}px`,
+            top: `${coord.y}%`,
           }}
         >
           

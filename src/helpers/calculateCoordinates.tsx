@@ -13,27 +13,27 @@ import { Coordinate } from '../types/Coordinate';
 
 
 export function calculateCoordinates(): Coordinate[] {
-  if (window.innerWidth >= 1920 && window.innerHeight >= 1080) {
-    return initialCoordinates1920;
-  } else if (window.innerWidth >= 1440 && window.innerHeight >= 900) {
-    return initialCoordinates1440x900;
-  } else if (window.innerWidth >= 1366 && window.innerHeight >= 768) {
-    return initialCoordinates1366x768;
-  } else if (window.innerWidth >= 1280 && window.innerHeight >= 720) {
-    return initialCoordinates1280;
-  } else if (window.innerWidth >= 768 && window.innerHeight >= 1024) {
-    return initialCoordinates1024;
-  } else if (window.innerWidth >= 414 && window.innerHeight >= 896) {
-    return initialCoordinates414x896;
-  } else if (window.innerWidth >= 414 && window.innerHeight >= 736) {
-    return initialCoordinates414x736;
-  } else if (window.innerWidth >= 375 && window.innerHeight >= 812) {
-    return initialCoordinates375x812;
-  } else if (window.innerWidth >= 375 && window.innerHeight >= 667) {
-    return initialCoordinates375x667;
-  } else if (window.innerWidth >= 360 && window.innerHeight >= 760) {
-    return initialCoordinates360x780;
-  } else {
+  // if (window.innerWidth >= 1920 && window.innerHeight >= 1080) {
+  //   return initialCoordinates1920;
+  // } else if (window.innerWidth >= 1440 && window.innerHeight >= 900) {
+  //   return initialCoordinates1440x900;
+  // } else if (window.innerWidth >= 1366 && window.innerHeight >= 768) {
+  //   return initialCoordinates1366x768;
+  // } else if (window.innerWidth >= 1280 && window.innerHeight >= 720) {
+  //   return initialCoordinates1280;
+  // } else if (window.innerWidth >= 768 && window.innerHeight >= 1024) {
+  //   return initialCoordinates1024;
+  // } else if (window.innerWidth >= 414 && window.innerHeight >= 896) {
+  //   return initialCoordinates414x896;
+  // } else if (window.innerWidth >= 414 && window.innerHeight >= 736) {
+  //   return initialCoordinates414x736;
+  // } else if (window.innerWidth >= 375 && window.innerHeight >= 812) {
+  //   return initialCoordinates375x812;
+  // } else if (window.innerWidth >= 375 && window.innerHeight >= 667) {
+  //   return initialCoordinates375x667;
+  // } else if (window.innerWidth >= 360 && window.innerHeight >= 760) {
+  //   return initialCoordinates360x780;
+  // } else {
     return initialCoordinates360x640;
-  }
+  // }
 }

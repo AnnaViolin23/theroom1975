@@ -1,12 +1,12 @@
 @import '../../helpers/mixin.scss';
 
 .round-button {
-  position: absolute;
+  position: relative;
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 1vh;
+  height: 1vh;
   
-  opacity: 0.25;
+  // opacity: 0.25;
   border-radius: 50%;
   background-color: #cd9191;
   border: 0.3px solid #000;

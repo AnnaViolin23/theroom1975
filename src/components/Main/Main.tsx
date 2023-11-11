@@ -17,10 +17,8 @@ export const Main: React.FC = () => {
   const [imageType, setImageType] = useState<ImageType>('origin');
   const [listVisible, setListVisible] = useState(false);
   const [isActiveScrollReminder, setIsActiveScrollToReminder] = useState(true);
-  // const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const sessionStorageKey = 'mainComponentOpened';
 
-  // const sessionStorageKey = 'mainComponentOpened';
-  // const isInitialLoadKey = 'isInitialLoad';
 
   const imagePaths: ImagePaths = useMemo(() => ({
     origin: '/images/IMG_2204.jpg',
@@ -36,7 +34,7 @@ export const Main: React.FC = () => {
       setShowMenu(true);
     }
   };
-  
+
   const preloadImages = useCallback(() => {
     const loadedImages: Record<string, boolean> = {};
 
@@ -55,30 +53,36 @@ export const Main: React.FC = () => {
     }
   }, [imageType, imagePaths]);
 
-    useEffect(() => {
-      // const hasComponentBeenOpened = sessionStorage.getItem(sessionStorageKey);
-      // const isInitialLoad = sessionStorage.getItem(isInitialLoadKey) === 'true';
-  
-      // if (!hasComponentBeenOpened) {
-      //   setIsInitialLoad(true);
-      //   sessionStorage.setItem(sessionStorageKey, 'true');
-      //   sessionStorage.setItem(isInitialLoadKey, 'true');
-      // } else {
-      //   setIsInitialLoad(false);
-      // }
-  
-      setMenuHeight();
-      preloadImages();
-    }, [
-      preloadImages, 
-      // setIsInitialLoad
-    ]);
+  useEffect(() => {
+    // const hasComponentBeenOpened = sessionStorage.getItem(sessionStorageKey);
+    // const isInitialLoad = sessionStorage.getItem(isInitialLoadKey) === 'true';
 
-    useEffect(() => {
-      setShowMenu(false);
-      setListVisible(false);
-    }, [imageType, setShowMenu]);
-  
+    // if (!hasComponentBeenOpened) {
+    //   setIsInitialLoad(true);
+    //   sessionStorage.setItem(sessionStorageKey, 'true');
+    //   sessionStorage.setItem(isInitialLoadKey, 'true');
+    // } else {
+    //   setIsInitialLoad(false);
+    // }
+
+    // setMenuHeight();
+    preloadImages();
+  }, [
+    preloadImages,
+    //   setIsInitialLoad
+  ]);
+
+  useEffect(() => {
+    setShowMenu(false);
+    setListVisible(false);
+  }, [imageType, setShowMenu]);
+
+  useEffect(() => {
+    const isScrollReminderOpen = JSON.parse(sessionStorage.getItem(sessionStorageKey) || 'true');
+
+    setIsActiveScrollToReminder(isScrollReminderOpen);
+  }, [])
+
   return (
     <div className='main'>
       <div className={classNames('container', {
@@ -86,6 +90,17 @@ export const Main: React.FC = () => {
         'show-image': showImage,
         [imageType]: true,
       })}>
+
+        <div className='div'>
+          <img
+            src={imagePaths[imageType]}
+            className={classNames('image', {
+              'active-menu': showMenu,
+            })}
+            alt='main img'
+          />
+          <Information />
+        </div>
 
         <img
           src='/menu.png'
@@ -96,13 +111,6 @@ export const Main: React.FC = () => {
           alt='burger menu icon'
         />
 
-        <img
-          src={imagePaths[imageType]}
-          className={classNames('image', {
-            'active-menu': showMenu,
-          })}
-          alt='main img'
-        />
 
         <List
           listVisible={listVisible}
@@ -113,7 +121,6 @@ export const Main: React.FC = () => {
           setShowMenu={setShowMenu}
         />
 
-        <Information />
 
         {isActiveScrollReminder && (
           <ScrollReminder

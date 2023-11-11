@@ -8,17 +8,29 @@ type Props = {
 
 export const ScrollReminder: React.FC<Props> = ({ isActive, setIsActive }) => {
   const [isMobile, setIsMobile] = useState(true);
+
   const topbarRef = useRef<HTMLDivElement | null>(null);
   const barText = isMobile ? "SCROLL TO EXPLORE" : "ZOOM IN TO EXPLORE";
   const barIcon = isMobile ? "arrow.png" : "zoom_in.png";
+  const sessionStorageKey = 'mainComponentOpened';
+  // const isInitialLoadKey = 'isInitialLoad';
 
   useEffect(() => {
     if (window.innerWidth >= 1280) {
       setIsMobile(false);
     }
+
+    
   }, [])
 
   const closeTopBar = () => {
+    // const hasComponentBeenOpened = sessionStorage.getItem(sessionStorageKey);
+
+    // if (!hasComponentBeenOpened) {
+      sessionStorage.setItem(sessionStorageKey, 'false');
+    //   sessionStorage.setItem(isInitialLoadKey, 'true');
+    // }
+
     if (topbarRef.current) {
       topbarRef.current.classList.toggle('hidden');
     }
